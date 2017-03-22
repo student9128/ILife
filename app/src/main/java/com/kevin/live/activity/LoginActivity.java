@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.kevin.live.R;
 import com.kevin.live.base.BaseActivity;
@@ -40,6 +41,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener 
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_login:
+                Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, MainActivity.class));
                 break;
         }
