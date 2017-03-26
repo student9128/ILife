@@ -34,7 +34,7 @@
             android:layout_gravity="center"
             android:text="Life"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="24sp" />
 
         <ImageView
             android:id="@+id/iv_function"

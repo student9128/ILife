@@ -21,7 +21,7 @@
             android:layout_width="30dp"
             android:layout_height="25dp"
             android:layout_gravity="center_vertical"
-            android:src="@drawable/ic_search_blue" />
+            android:src="@drawable/ic_search_red" />
 
         <EditText
             android:layout_width="match_parent"

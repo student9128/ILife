@@ -31,7 +31,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     private List<String> mTabList = new ArrayList<>();
     private TabLayoutFragmentAdapter mAdapter;
     private List<Fragment> mFragments = new ArrayList<>();
-    private int[] mTabImgs = new int[]{R.drawable.ic_home, R.drawable.ic_performance, R.drawable.ic_repository, R.drawable.ic_me};
+    private int[] mTabImgs = new int[]{R.drawable.ic_home, R.drawable.ic_news, R.drawable.ic_study, R.drawable.ic_me};
 
     private ImageView mSearch, mBack;
 
@@ -40,9 +40,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mContainer = (LinearLayout) findViewById(R.id.activity_main);
-        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
-        mToolbar.setTitle(" ");
-        setSupportActionBar(mToolbar);
         mBack = (ImageView) findViewById(R.id.iv_back);
         mBack.setVisibility(View.GONE);
         mSearch = (ImageView) findViewById(R.id.iv_function);
@@ -116,9 +113,9 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         if (getString(R.string.tab_home).equals(s)) {
             tabIcon.setImageResource(R.drawable.ic_home_fill);
         } else if (getString(R.string.tab_performance).equals(s)) {
-            tabIcon.setImageResource(R.drawable.ic_performance_fill);
+            tabIcon.setImageResource(R.drawable.ic_news_fill);
         } else if (getString(R.string.tab_repository).equals(s)) {
-            tabIcon.setImageResource(R.drawable.ic_repository_fill);
+            tabIcon.setImageResource(R.drawable.ic_study_fill);
         } else if (getString(R.string.tab_me).equals(s)) {
             tabIcon.setImageResource(R.drawable.ic_me_fill);
         }
@@ -133,9 +130,9 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         if (getString(R.string.tab_home).equals(s)) {
             tabIcon.setImageResource(R.drawable.ic_home);
         } else if (getString(R.string.tab_performance).equals(s)) {
-            tabIcon.setImageResource(R.drawable.ic_performance);
+            tabIcon.setImageResource(R.drawable.ic_news);
         } else if (getString(R.string.tab_repository).equals(s)) {
-            tabIcon.setImageResource(R.drawable.ic_repository);
+            tabIcon.setImageResource(R.drawable.ic_study);
         } else if (getString(R.string.tab_me).equals(s)) {
             tabIcon.setImageResource(R.drawable.ic_me);
         }

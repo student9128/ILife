@@ -8,17 +8,19 @@
     android:orientation="vertical"
     tools:context="com.kevin.live.activity.MainActivity">
 
-    <include layout="@layout/tool_bar_title" />
+    <include layout="@layout/title_bar" />
 
     <com.kevin.live.view.NoSmoothViewPager
         android:id="@+id/ns_view_pager"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"></com.kevin.live.view.NoSmoothViewPager>
-<View
-    android:layout_width="match_parent"
-    android:layout_height="1px"
-    android:background="@color/gray_2"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_2" />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_layout"
         android:layout_width="match_parent"
