@@ -7,16 +7,23 @@
 
     <ImageView
         android:id="@+id/iv_back"
-        android:layout_width="56dp"
+        android:layout_width="55dp"
         android:layout_height="match_parent"
         android:layout_alignParentLeft="true"
         android:background="@drawable/bg_select_state_title_bar_right"
         android:clickable="true"
         android:paddingBottom="15dp"
-        android:paddingLeft="10dp"
+        android:paddingLeft="15dp"
         android:paddingRight="15dp"
         android:paddingTop="15dp"
-        android:src="@drawable/ic_back" />
+        android:src="@drawable/ic_back_m" />
+
+    <View
+        android:layout_width="2px"
+        android:layout_height="25dp"
+        android:layout_centerVertical="true"
+        android:layout_toRightOf="@id/iv_back"
+        android:background="@color/colorPrimaryDark" />
 
     <TextView
         android:id="@+id/tv_title"
@@ -25,7 +32,7 @@
         android:layout_centerInParent="true"
         android:text="Life"
         android:textColor="@color/white"
-        android:textSize="20sp" />
+        android:textSize="24sp" />
 
     <ImageView
         android:id="@+id/iv_function"

@@ -33,4 +33,17 @@
     <style name="MyToolbar" parent="Widget.AppCompat.Toolbar">
         <item name="contentInsetStart">0dp</item><!-- 解决左边距-->
     </style>
+
+    <style name="DialogFullscreen">
+        <item name="android:windowBackground">@color/bg</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@style/Dialog_Anim</item>
+        <item name="android:colorBackgroundCacheHint">@null</item>
+    </style>
+    <style name="Dialog_Anim">
+        <item name="android:windowEnterAnimation">@anim/fade_in</item>
+        <item name="android:windowExitAnimation">@anim/fade_out</item>
+    </style>
 </resources>

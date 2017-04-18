@@ -21,8 +21,8 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams. FLAG_FULLSCREEN ,
-                WindowManager.LayoutParams. FLAG_FULLSCREEN);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -32,6 +32,8 @@ public class SplashActivity extends AppCompatActivity {
                 //从显示到完全透明
                 Animation fadeOut = AnimationUtils.loadAnimation(SplashActivity.this, R.anim.animation_fadeout);
                 fadeOut.setFillAfter(true);
+                getWindow().setFlags(WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN,
+                        WindowManager.LayoutParams.FLAG_FORCE_NOT_FULLSCREEN);
                 startActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 finish();
             }
