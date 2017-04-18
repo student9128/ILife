@@ -16,8 +16,8 @@ import com.kevin.live.adapter.TabLayoutFragmentAdapter;
 import com.kevin.live.base.BaseActivity;
 import com.kevin.live.fragment.HomeFragment;
 import com.kevin.live.fragment.MeFragment;
-import com.kevin.live.fragment.PerformanceFragment;
-import com.kevin.live.fragment.RepositoryFragment;
+import com.kevin.live.fragment.NewsFragment;
+import com.kevin.live.fragment.StudyFragment;
 import com.kevin.live.view.NoSmoothViewPager;
 
 import java.util.ArrayList;
@@ -78,8 +78,8 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     public void initFragmentList() {
         mFragments.clear();
         mFragments.add(HomeFragment.newInstance(getString(R.string.tab_home)));
-        mFragments.add(PerformanceFragment.newInstance(getString(R.string.tab_performance)));
-        mFragments.add(RepositoryFragment.newInstance(getString(R.string.tab_repository)));
+        mFragments.add(NewsFragment.newInstance(getString(R.string.tab_performance)));
+        mFragments.add(StudyFragment.newInstance(getString(R.string.tab_repository)));
         mFragments.add(MeFragment.newInstance(getString(R.string.tab_me)));
 
     }

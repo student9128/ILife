@@ -5,10 +5,12 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.kevin.live.R;
 import com.kevin.live.base.BaseActivity;
+import com.kevin.live.util.TypeFaceUtils;
 import com.kevin.live.view.CaseViewDialog;
 
 /**
@@ -21,6 +23,7 @@ import com.kevin.live.view.CaseViewDialog;
 public class LoginActivity extends BaseActivity implements View.OnClickListener, CaseViewDialog.Callback {
     private Button mLogin;
     private CaseViewDialog caseViewDialog;
+    private TextView mTvLogo;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +33,10 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 
     @Override
     public void initView() {
+        mTvLogo = (TextView) findViewById(R.id.tv_app_logo);
+//        Typeface type = Typeface.createFromAsset(getAssets(), "VastShadow-Regular.ttf");
+//        mTvLogo.setTypeface(type);
+        TypeFaceUtils.setTypeface(this,mTvLogo);
         mLogin = (Button) findViewById(R.id.btn_login);
         mLogin.setOnClickListener(this);
 //        caseViewDialog = new CaseViewDialog(this);

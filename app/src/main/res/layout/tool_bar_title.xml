@@ -44,7 +44,7 @@
             android:background="@drawable/bg_select_state_title_bar_right"
             android:clickable="true"
             android:padding="15dp"
-            android:src="@drawable/ic_search" />
+            android:src="@drawable/ic_search_green" />
 
     </android.support.v7.widget.Toolbar>
 </LinearLayout>

@@ -17,9 +17,9 @@ import com.kevin.live.constant.Constant;
  * Description:
  */
 
-public class RepositoryFragment extends BaseFragment {
-    public static RepositoryFragment newInstance(String s) {
-        RepositoryFragment fragment = new RepositoryFragment();
+public class StudyFragment extends BaseFragment {
+    public static StudyFragment newInstance(String s) {
+        StudyFragment fragment = new StudyFragment();
         Bundle bundle = new Bundle();
         bundle.putString(Constant.ARGS, s);
         fragment.setArguments(bundle);
