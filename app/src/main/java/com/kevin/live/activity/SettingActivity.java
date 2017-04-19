@@ -22,4 +22,9 @@ public class SettingActivity extends BaseActivity {
     public void initData() {
 
     }
+
+    @Override
+    public void initListener() {
+
+    }
 }

@@ -3,7 +3,6 @@ package com.kevin.live.activity;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -35,19 +34,19 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
 
     private ImageView mSearch, mBack;
 
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//    }
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    public void initView() {
         setContentView(R.layout.activity_main);
         mContainer = (LinearLayout) findViewById(R.id.activity_main);
         mBack = (ImageView) findViewById(R.id.iv_back);
         mBack.setVisibility(View.GONE);
         mSearch = (ImageView) findViewById(R.id.iv_function);
         mSearch.setOnClickListener(this);
-    }
-
-    @Override
-    public void initView() {
 
         mViewPager = (NoSmoothViewPager) findViewById(R.id.ns_view_pager);
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -86,6 +85,11 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
 
     @Override
     public void initData() {
+
+    }
+
+    @Override
+    public void initListener() {
 
     }
 

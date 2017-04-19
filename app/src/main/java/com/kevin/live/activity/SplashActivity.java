@@ -29,8 +29,6 @@ public class SplashActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_splash);
         mTvLogo = (TextView) findViewById(R.id.tv_app_logo);
-//        Typeface type = Typeface.createFromAsset(getAssets(), "VastShadow-Regular.ttf");
-//        mTvLogo.setTypeface(type);
         TypeFaceUtils.setTypeface(this,mTvLogo);
         new Handler().postDelayed(new Runnable() {
             @Override

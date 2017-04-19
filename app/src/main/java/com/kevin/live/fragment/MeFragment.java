@@ -29,7 +29,7 @@ public class MeFragment extends BaseFragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home, container,false);
+        View view = inflater.inflate(R.layout.fragment_me, container, false);
         Bundle bundle = getArguments();
         String s = bundle.getString(Constant.ARGS);
         TextView mText = (TextView) view.findViewById(R.id.tv_text);

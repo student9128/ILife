@@ -51,6 +51,11 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
+    public void initListener() {
+
+    }
+
+    @Override
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.iv_back:
