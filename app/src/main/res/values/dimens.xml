@@ -4,10 +4,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
     <!-- Global margin value for all the ui in the application -->
-    <dimen name="uniform_margin">15dp</dimen>
+    <dimen name="uniform_margin">16dp</dimen>
 
     <!-- Global padding value for all the ui in the application -->
-    <dimen name="uniform_padding">15dp</dimen>
+    <dimen name="uniform_padding">16dp</dimen>
 
     <!-- margin value -->
     <dimen name="margin_5">5dp</dimen>

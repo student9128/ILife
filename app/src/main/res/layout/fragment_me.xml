@@ -6,6 +6,7 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/rl_user_info"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:background="@color/colorPrimary">
@@ -18,6 +19,20 @@
             app:riv_border_color="@color/transparent"
             app:riv_border_width="1px"
             app:riv_oval="true" />
+
+        <TextView
+            android:layout_width="80dp"
+            android:layout_height="40dp"
+            android:paddingTop="@dimen/padding_10"
+            android:paddingBottom="@dimen/padding_10"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:gravity="center_vertical"
+            android:paddingLeft="20dp"
+            android:layout_marginBottom="@dimen/uniform_margin"
+            android:background="@drawable/bg_about_me"
+            android:textColor="@color/colorPrimary"
+            android:text="关于我" />
     </RelativeLayout>
 
     <LinearLayout style="@style/FragmentMeItemStyle">
@@ -27,7 +42,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/black" />
-    </LinearLayout><LinearLayout style="@style/FragmentMeItemStyle">
+    </LinearLayout>
+
+    <LinearLayout style="@style/FragmentMeItemStyle">
 
         <TextView
             android:id="@+id/tv_text1"
@@ -41,9 +58,9 @@
 
         <TextView
             android:id="@+id/tv_text2"
-            android:text="关于"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="关于"
             android:textColor="@color/black" />
     </LinearLayout>
 </LinearLayout>

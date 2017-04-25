@@ -22,6 +22,7 @@ import com.kevin.live.view.NoSmoothViewPager;
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class MainActivity extends BaseActivity implements TabLayout.OnTabSelectedListener, View.OnClickListener {
     private LinearLayout mContainer;
     private Toolbar mToolbar;

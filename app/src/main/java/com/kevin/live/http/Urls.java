@@ -1,0 +1,20 @@
+package com.kevin.live.http;
+
+/**
+ * Created by <b><a style="color:#8BC34A"href="http://blog.csdn.net/student9128">Kevin</a></b> on 2017/4/24.
+ * <br/><b>Blog:</b>
+ * <div style="color:#8BC34A"><i>http://blog.csdn.net/student9128.</i></div>
+ * <p style="color:#4CAF50"><b>Description:</b>
+ * <br/>
+ * </p >
+ */
+
+
+public class Urls {
+    /**
+     * appkey:b09e6d69a9864de1bba1d7c52050d083
+     */
+    //http://api.avatardata.cn/MobilePlace/LookUp
+    public static final String BASE_URL = "http://api.avatardata.cn/MobilePlace/LookUp";
+    public static final String APP_Key = "b09e6d69a9864de1bba1d7c52050d083";
+}
