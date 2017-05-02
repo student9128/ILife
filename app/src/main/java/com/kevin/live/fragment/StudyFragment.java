@@ -23,7 +23,7 @@ public class StudyFragment extends BaseFragment {
 
     @Override
     public int setLayoutResId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_study;
     }
 
     @Override

@@ -1,5 +1,6 @@
 package com.kevin.live.activity;
 
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -49,8 +50,6 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
     TextView mLocation;
     @BindView(R.id.tv_type)
     TextView mMobileNumberType;
-    @BindView(R.id.iv_back)
-    ImageView mIvBack;
     @BindView(R.id.tv_title)
     TextView mTvTitle;
     @BindView(R.id.iv_function)
@@ -61,6 +60,8 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
     TextView mTvZoneNumber;
     @BindView(R.id.tv_postcode)
     TextView mTvPostcode;
+    @BindView(R.id.tool_bar)
+    Toolbar mToolBar;
 
     private RequestQueue mQueue;
 
@@ -68,6 +69,9 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
     public void initView() {
         setContentView(R.layout.activity_mobile_look_up);
         ButterKnife.bind(this);
+        mToolBar.setTitle("");
+        setSupportActionBar(mToolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mQueue = Volley.newRequestQueue(this);
     }
 
@@ -79,6 +83,12 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
 
     @Override
     public void initListener() {
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
         mBtnQuery.setOnClickListener(this);
         mEtMobileNumber.addTextChangedListener(new TextWatcher() {
             @Override
@@ -99,7 +109,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
             }
         });
         mTvClear.setOnClickListener(this);
-        mIvBack.setOnClickListener(this);
+//        mIvBack.setOnClickListener(this);
 
     }
 
@@ -120,15 +130,13 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
                 mEtMobileNumber.setText("");
                 mTvClear.setVisibility(View.GONE);
                 break;
-            case R.id.iv_back:
-                finish();
-                break;
+
         }
 
     }
 
     private void doPostQryMolbieNumberLocation() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.BASE_URL, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.MOBILE_PLACE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 LogK.i("TAG", response);
@@ -137,7 +145,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
                 MobileNumberLookUpBean mobileNumberLookUpBean = JSON.parseObject(response, MobileNumberLookUpBean.class);
                 int errorCode = mobileNumberLookUpBean.getError_code();
                 String reason = mobileNumberLookUpBean.getReason();
-                if (0==errorCode) {
+                if (0 == errorCode) {
                     MobileNumberLookUpBean.ResultBean result = mobileNumberLookUpBean.getResult();
                     String mobilearea = result.getMobilearea();
                     String mobiletype = result.getMobiletype();

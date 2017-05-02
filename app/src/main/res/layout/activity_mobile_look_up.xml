@@ -5,19 +5,20 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/title_bar" />
+    <include layout="@layout/tool_bar" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/amber"
+        android:background="@color/amber_1"
         android:elevation="2dp"
         android:maxLines="1"
         android:paddingBottom="@dimen/padding_5"
-        android:paddingLeft="@dimen/padding_10"
+        android:paddingLeft="@dimen/uniform_padding"
         android:paddingTop="@dimen/padding_5"
         android:text="温馨提示：当前功能只能查询11位手机号"
-        android:textColor="@color/red" />
+        android:textColor="@color/red"
+        android:textSize="12sp" />
 
     <TextView
         android:layout_width="match_parent"
@@ -35,6 +36,7 @@
         android:layout_marginRight="@dimen/uniform_margin"
         android:layout_marginTop="@dimen/uniform_margin"
         android:background="@drawable/bg_edit_text_mobile_number"
+        android:elevation="2dp"
         android:orientation="horizontal">
 
         <EditText

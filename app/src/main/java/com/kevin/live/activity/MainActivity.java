@@ -1,6 +1,5 @@
 package com.kevin.live.activity;
 
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -33,7 +32,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     private List<Fragment> mFragments = new ArrayList<>();
     private int[] mTabImgs = new int[]{R.drawable.ic_home, R.drawable.ic_news, R.drawable.ic_study, R.drawable.ic_me};
 
-    private ImageView mSearch, mBack;
 
 //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -44,11 +42,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     public void initView() {
         setContentView(R.layout.activity_main);
         mContainer = (LinearLayout) findViewById(R.id.activity_main);
-        mBack = (ImageView) findViewById(R.id.iv_back);
-        mBack.setVisibility(View.GONE);
-        mSearch = (ImageView) findViewById(R.id.iv_function);
-        mSearch.setOnClickListener(this);
-
         mViewPager = (NoSmoothViewPager) findViewById(R.id.ns_view_pager);
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
         initTabList();
@@ -56,6 +49,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         mAdapter = new TabLayoutFragmentAdapter(getSupportFragmentManager(), this, mFragments, mTabList, mTabImgs);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(0);
+        mViewPager.setOffscreenPageLimit(4);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         for (int i = 0; i < mTabLayout.getTabCount(); i++) {
@@ -146,9 +140,9 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.iv_function:
-                startActivity(new Intent(this, SearchActivity.class));
-                break;
+//            case R.id.iv_function:
+//                startActivity(new Intent(this, SearchActivity.class));
+//                break;
         }
     }
 }

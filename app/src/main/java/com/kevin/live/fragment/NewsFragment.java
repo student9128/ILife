@@ -23,7 +23,7 @@ public class NewsFragment extends BaseFragment {
 
     @Override
     public int setLayoutResId() {
-        return R.layout.fragment_home;
+        return R.layout.fragment_news;
     }
 
     @Override

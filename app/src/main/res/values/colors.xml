@@ -14,6 +14,8 @@
     <color name="teal">#009688</color>
     <color name="amber">#FFE57F</color>
     <color name="red">#F44336</color>
+    <color name="amber_1">#FFEDB2</color>
+    <color name="gray_8">#36707070</color>
 
     <color name="black_1">#88000000</color>
     <color name="gray_4">#212121</color>

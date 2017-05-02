@@ -8,8 +8,6 @@
     android:orientation="vertical"
     tools:context="com.kevin.live.activity.MainActivity">
 
-    <include layout="@layout/title_bar" />
-
     <com.kevin.live.view.NoSmoothViewPager
         android:id="@+id/ns_view_pager"
         android:layout_width="match_parent"

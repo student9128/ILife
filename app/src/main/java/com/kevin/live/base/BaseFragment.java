@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.kevin.live.R;
 
 import butterknife.ButterKnife;
+import butterknife.Unbinder;
 
 
 /**
@@ -24,12 +25,14 @@ import butterknife.ButterKnife;
 public abstract class BaseFragment extends AppBaseFragment {
 
     protected View mView;
+    public Unbinder unbinder;
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         mView = inflater.inflate(setLayoutResId(), container, false);
         ButterKnife.bind(this, mView);
+        unbinder = ButterKnife.bind(this, mView);
         initView();
         initData();
         initListener();
@@ -60,6 +63,12 @@ public abstract class BaseFragment extends AppBaseFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         printLogi("onActivityCreated");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     /**
