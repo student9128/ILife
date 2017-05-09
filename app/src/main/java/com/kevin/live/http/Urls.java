@@ -16,8 +16,11 @@ public class Urls {
      */
     //http://api.avatardata.cn/XinHuaZiDian/LookUp字典接口
     //http://api.avatardata.cn/MobilePlace/LookUp
-    public static final String BASE_URL = "http://api.avatardata.cn/";
     public static final String APP_Key = "b09e6d69a9864de1bba1d7c52050d083";
+    //http://api.avatardata.cn/MobilePlace/LookUp
+    public static final String BASE_URL = "http://api.avatardata.cn/";
+    public static final String CITY_BUS = BASE_URL + "CityBus/LookUp";
     public static final String MOBILE_PLACE = BASE_URL + "MobilePlace/LookUp";
     public static final String CHINESE_DICTIONARY = BASE_URL + "XinHuaZiDian/LookUp";
+    public static final String JOKE_BY_TIME = BASE_URL + "Joke/QueryJokeByTime";
 }

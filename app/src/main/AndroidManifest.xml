@@ -26,6 +26,8 @@
             android:theme="@style/SubTheme" />
         <activity android:name="com.kevin.live.activity.SearchActivity" />
         <activity android:name=".activity.MobileLookUpActivity"/>
+        <activity android:name=".activity.CityBusActivity"/>
+        <activity android:name=".activity.JokeActivity"/>
     </application>
 
 </manifest>

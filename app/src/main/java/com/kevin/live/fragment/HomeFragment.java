@@ -18,6 +18,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.kevin.live.R;
+import com.kevin.live.activity.CityBusActivity;
+import com.kevin.live.activity.JokeActivity;
 import com.kevin.live.activity.MobileLookUpActivity;
 import com.kevin.live.adapter.HomeGridViewAdapter;
 import com.kevin.live.adapter.MyViewPagerAdapter;
@@ -170,12 +172,15 @@ public class HomeFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
+                        startActivity(new Intent(mActivity, CityBusActivity.class));
+                        break;
                     case 1:
                     case 2:
                         showToast("正在开发中...");
                         break;
                     case 3://笑话大全
                         showToast("正在开发中...");
+                        startActivity(new Intent(mActivity, JokeActivity.class));
                         break;
                     case 4:
                         startActivity(new Intent(mActivity, MobileLookUpActivity.class));
