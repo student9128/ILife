@@ -1,6 +1,7 @@
 package com.kevin.live.activity;
 
-import android.widget.ListView;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.AuthFailureError;
@@ -11,10 +12,9 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.kevin.live.R;
-import com.kevin.live.adapter.JokeAdapter;
+import com.kevin.live.adapter.JokeByTimeAdapter;
 import com.kevin.live.base.BaseActivity;
 import com.kevin.live.bean.JokeByTimeBean;
-import com.kevin.live.bean.MobileNumberLookUpBean;
 import com.kevin.live.http.Urls;
 import com.kevin.live.util.LogK;
 
@@ -36,13 +36,14 @@ import java.util.Map;
 public class JokeActivity extends BaseActivity {
     private RequestQueue mQueue;
     private List<JokeByTimeBean.ResultBean> mData = new ArrayList<>();
-    private ListView mListView;
+    private RecyclerView mRecyclerView;
 
     @Override
     public void initView() {
         setContentView(R.layout.activity_joke);
         mQueue = Volley.newRequestQueue(this);
-        mListView = (ListView) findViewById(R.id.lv_list_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.lv_list_view);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     @Override
@@ -69,8 +70,8 @@ public class JokeActivity extends BaseActivity {
                 if (0 == errorCode) {
                     List<JokeByTimeBean.ResultBean> result = jokeByTimeBean.getResult();
                     mData.addAll(result);
-                    JokeAdapter jokeAdapter = new JokeAdapter(JokeActivity.this, mData);
-                    mListView.setAdapter(jokeAdapter);
+                    JokeByTimeAdapter jokeAdapter = new JokeByTimeAdapter(JokeActivity.this, mData);
+                    mRecyclerView.setAdapter(jokeAdapter);
 
                 } else {
                 }
