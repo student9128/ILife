@@ -4,6 +4,9 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
 import com.android.volley.AuthFailureError;
@@ -19,6 +22,7 @@ import com.kevin.live.adapter.JokeTabLayoutFragmentAdapter;
 import com.kevin.live.base.BaseActivity;
 import com.kevin.live.bean.JokeByTimeBean;
 import com.kevin.live.fragment.HomeFragment;
+import com.kevin.live.fragment.JokeByTimeFragmnet;
 import com.kevin.live.fragment.MeFragment;
 import com.kevin.live.fragment.NewsFragment;
 import com.kevin.live.fragment.StudyFragment;
@@ -31,6 +35,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+
 /**
  * Created by <b><a style="color:#8BC34A"href="http://blog.csdn.net/student9128">Kevin</a></b> on 2017/5/9.
  * <br/><b>Blog:</b>
@@ -42,44 +49,53 @@ import java.util.Map;
 
 
 public class JokeActivity extends BaseActivity {
-    private RequestQueue mQueue;
-    private List<JokeByTimeBean.ResultBean> mData = new ArrayList<>();
-    private RecyclerView mRecyclerView;
+
     private NoSmoothViewPager mViewPager;
     private TabLayout mTabLayout;
     private List<Fragment> mFragments = new ArrayList<>();
     private List<String> mTabList = new ArrayList<>();
     private JokeTabLayoutFragmentAdapter mAdapter;
+    private TextView mTitle;
+    @BindView(R.id.tool_bar)
+    Toolbar mToolBar;
 
     @Override
     public void initView() {
         setContentView(R.layout.activity_joke);
-        mQueue = Volley.newRequestQueue(this);
-        mRecyclerView = (RecyclerView) findViewById(R.id.lv_list_view);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        ButterKnife.bind(this);
+        mToolBar.setTitle("");
+        setSupportActionBar(mToolBar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mTitle = (TextView) findViewById(R.id.tv_title);
         mViewPager = (NoSmoothViewPager) findViewById(R.id.ns_view_pager);
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
         initTabList();
         initFragmentList();
         mAdapter = new JokeTabLayoutFragmentAdapter(getSupportFragmentManager(), this, mFragments, mTabList);
         mViewPager.setAdapter(mAdapter);
+        mViewPager.setCurrentItem(0);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
     }
 
     @Override
     public void initData() {
-        doPostQryJoke();
+        mTitle.setText("笑话大全");
     }
 
     @Override
     public void initListener() {
-
+        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
     }
 
     private void initTabList() {
         mTabList.clear();
-        mTabList.add(getString(R.string.tab_home));
+        mTabList.add("按时间笑话");
         mTabList.add(getString(R.string.tab_performance));
         mTabList.add(getString(R.string.tab_repository));
         mTabList.add(getString(R.string.tab_me));
@@ -90,53 +106,12 @@ public class JokeActivity extends BaseActivity {
      */
     public void initFragmentList() {
         mFragments.clear();
-        mFragments.add(HomeFragment.newInstance(getString(R.string.tab_home)));
+        mFragments.add(JokeByTimeFragmnet.newInstance(getString(R.string.tab_home)));
         mFragments.add(NewsFragment.newInstance(getString(R.string.tab_performance)));
         mFragments.add(StudyFragment.newInstance(getString(R.string.tab_repository)));
         mFragments.add(MeFragment.newInstance(getString(R.string.tab_me)));
 
     }
 
-    private void doPostQryJoke() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.JOKE_BY_TIME, new Response.Listener<String>() {
-            @Override
-            public void onResponse(String response) {
-                LogK.i("TAG", response);
-//                Gson gson = new Gson();
-//                MobileNumberLookUpBean mobileNumberLookUpBean = gson.fromJson(response, MobileNumberLookUpBean.class);
-                JokeByTimeBean jokeByTimeBean = JSON.parseObject(response, JokeByTimeBean.class);
-                int errorCode = jokeByTimeBean.getError_code();
-                String reason = jokeByTimeBean.getReason();
 
-                if (0 == errorCode) {
-                    List<JokeByTimeBean.ResultBean> result = jokeByTimeBean.getResult();
-                    mData.addAll(result);
-                    JokeByTimeAdapter jokeAdapter = new JokeByTimeAdapter(JokeActivity.this, mData);
-                    mRecyclerView.setAdapter(jokeAdapter);
-
-                } else {
-                }
-
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                showToast("请求失败");
-            }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map = new HashMap<>();
-                map.put("key", "54b71bf5c34b4b038670d0c3fb52e57b");
-                map.put("time", "1418745237");
-                map.put("sort", "asc");
-                map.put("page", "2");
-                map.put("rows", "20");
-//                map.put("dtype", "JSON");
-                return map;
-            }
-        };
-
-        mQueue.add(stringRequest);
-    }
 }
