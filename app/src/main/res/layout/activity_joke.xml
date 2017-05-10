@@ -1,8 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-<include layout="@layout/tool_bar"/>
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include layout="@layout/tool_bar" />
+
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:tabBackground="@drawable/bg_select_state_tab"
+        app:tabIndicatorHeight="0dp"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextAppearance="@style/tabTextSizeStyle"
+        app:tabTextColor="@color/black"></android.support.design.widget.TabLayout>
+
+    <com.kevin.live.view.NoSmoothViewPager
+        android:id="@+id/ns_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"></com.kevin.live.view.NoSmoothViewPager>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/lv_list_view"
         android:layout_width="match_parent"
