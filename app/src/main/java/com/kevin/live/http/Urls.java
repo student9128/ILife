@@ -23,4 +23,6 @@ public class Urls {
     public static final String MOBILE_PLACE = BASE_URL + "MobilePlace/LookUp";
     public static final String CHINESE_DICTIONARY = BASE_URL + "XinHuaZiDian/LookUp";
     public static final String JOKE_BY_TIME = BASE_URL + "Joke/QueryJokeByTime";
+    public static final String JOKE_NEWS_JOKE = BASE_URL + "Joke/NewstJoke";
+    public static final String JOKE_NEWS_IMG = BASE_URL + "Joke/NewstImg";
 }

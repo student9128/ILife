@@ -3,6 +3,7 @@ package com.kevin.live.activity;
 import android.content.Intent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,6 +23,7 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
     private Button mLogin;
     private CaseViewDialog caseViewDialog;
     private TextView mTvLogo;
+    private ImageView mIvTest;
 
 //    @Override
 //    protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,6 +42,9 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 //        caseViewDialog = new CaseViewDialog(this);
 //        caseViewDialog.setCallBack(this);
 //        caseViewDialog.show();
+        long l = System.currentTimeMillis();
+        printLogd("时间戳:\t" + l);
+        mIvTest = (ImageView) findViewById(R.id.iv_test);
     }
 
     @Override

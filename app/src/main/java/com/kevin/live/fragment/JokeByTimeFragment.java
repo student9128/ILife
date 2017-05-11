@@ -14,7 +14,6 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.kevin.live.R;
-import com.kevin.live.activity.JokeActivity;
 import com.kevin.live.adapter.JokeByTimeAdapter;
 import com.kevin.live.base.BaseFragment;
 import com.kevin.live.bean.JokeByTimeBean;
@@ -33,14 +32,14 @@ import java.util.Map;
  * Description:
  */
 
-public class JokeByTimeFragmnet extends BaseFragment {
+public class JokeByTimeFragment extends BaseFragment {
     private RequestQueue mQueue;
     private RecyclerView mRecyclerView;
     private List<JokeByTimeBean.ResultBean> mData = new ArrayList<>();
     private SwipeRefreshLayout mSwipeRefresh;
 
-    public static JokeByTimeFragmnet newInstance(String s) {
-        JokeByTimeFragmnet fragment = new JokeByTimeFragmnet();
+    public static JokeByTimeFragment newInstance(String s) {
+        JokeByTimeFragment fragment = new JokeByTimeFragment();
         Bundle bundle = new Bundle();
         bundle.putString(Constant.ARGS, s);
         fragment.setArguments(bundle);
@@ -77,7 +76,7 @@ public class JokeByTimeFragmnet extends BaseFragment {
     }
 
     private void doPostQryJoke() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.JOKE_BY_TIME, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.JOKE_NEWS_JOKE, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 LogK.i("TAG", response);
@@ -109,12 +108,14 @@ public class JokeByTimeFragmnet extends BaseFragment {
             @Override
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
-                map.put("key", "54b71bf5c34b4b038670d0c3fb52e57b");
-                map.put("time", "1418745237");
-                map.put("sort", "asc");
-                map.put("page", "2");
-                map.put("rows", "20");
-//                map.put("dtype", "JSON");
+
+                map.put("key", "0933128229dd416daf447c564d65eb92");
+//                map.put("time", "1418745237");
+//                map.put("time", String.valueOf(System.currentTimeMillis()).substring(0, 10));
+//                map.put("sort", "desc");
+//                map.put("page", 2);
+//                map.put("rows", 10);
+                map.put("dtype", "JSON");
                 return map;
             }
         };

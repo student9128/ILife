@@ -2,38 +2,19 @@ package com.kevin.live.activity;
 
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
-import com.alibaba.fastjson.JSON;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
 import com.kevin.live.R;
-import com.kevin.live.adapter.JokeByTimeAdapter;
 import com.kevin.live.adapter.JokeTabLayoutFragmentAdapter;
 import com.kevin.live.base.BaseActivity;
-import com.kevin.live.bean.JokeByTimeBean;
-import com.kevin.live.fragment.HomeFragment;
-import com.kevin.live.fragment.JokeByTimeFragmnet;
-import com.kevin.live.fragment.MeFragment;
-import com.kevin.live.fragment.NewsFragment;
-import com.kevin.live.fragment.StudyFragment;
-import com.kevin.live.http.Urls;
-import com.kevin.live.util.LogK;
+import com.kevin.live.fragment.JokeByTimeFragment;
+import com.kevin.live.fragment.JokeWithPicFragment;
 import com.kevin.live.view.NoSmoothViewPager;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -95,10 +76,10 @@ public class JokeActivity extends BaseActivity {
 
     private void initTabList() {
         mTabList.clear();
-        mTabList.add("按时间笑话");
-        mTabList.add(getString(R.string.tab_performance));
-        mTabList.add(getString(R.string.tab_repository));
-        mTabList.add(getString(R.string.tab_me));
+        mTabList.add("纯文字");
+        mTabList.add("趣图");
+//        mTabList.add(getString(R.string.tab_repository));
+//        mTabList.add(getString(R.string.tab_me));
     }
 
     /**
@@ -106,10 +87,10 @@ public class JokeActivity extends BaseActivity {
      */
     public void initFragmentList() {
         mFragments.clear();
-        mFragments.add(JokeByTimeFragmnet.newInstance(getString(R.string.tab_home)));
-        mFragments.add(NewsFragment.newInstance(getString(R.string.tab_performance)));
-        mFragments.add(StudyFragment.newInstance(getString(R.string.tab_repository)));
-        mFragments.add(MeFragment.newInstance(getString(R.string.tab_me)));
+        mFragments.add(JokeByTimeFragment.newInstance(getString(R.string.tab_home)));
+        mFragments.add(JokeWithPicFragment.newInstance(getString(R.string.tab_performance)));
+//        mFragments.add(StudyFragment.newInstance(getString(R.string.tab_repository)));
+//        mFragments.add(MeFragment.newInstance(getString(R.string.tab_me)));
 
     }
 
