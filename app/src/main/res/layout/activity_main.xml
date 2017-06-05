@@ -8,36 +8,25 @@
     android:orientation="vertical"
     tools:context="com.kevin.live.activity.MainActivity">
 
-    <android.support.v4.widget.SwipeRefreshLayout
-        android:id="@+id/srl_swipe_refresh_layout"
+
+    <com.kevin.live.view.NoSmoothViewPager
+        android:id="@+id/ns_view_pager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="0dp"
+        android:layout_weight="1"></com.kevin.live.view.NoSmoothViewPager>
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/gray_2" />
 
-            <com.kevin.live.view.NoSmoothViewPager
-                android:id="@+id/ns_view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="1"></com.kevin.live.view.NoSmoothViewPager>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1px"
-                android:background="@color/gray_2" />
-
-            <android.support.design.widget.TabLayout
-                android:id="@+id/tab_layout"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                app:tabBackground="@drawable/bg_select_state_tab"
-                app:tabIndicatorHeight="0dp"
-                app:tabSelectedTextColor="@color/colorPrimary"
-                app:tabTextAppearance="@style/tabTextSizeStyle"
-                app:tabTextColor="@color/black"></android.support.design.widget.TabLayout>
-        </LinearLayout>
-    </android.support.v4.widget.SwipeRefreshLayout>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        app:tabBackground="@drawable/bg_select_state_tab"
+        app:tabIndicatorHeight="0dp"
+        app:tabSelectedTextColor="@color/colorPrimary"
+        app:tabTextAppearance="@style/tabTextSizeStyle"
+        app:tabTextColor="@color/black"></android.support.design.widget.TabLayout>
 </LinearLayout>

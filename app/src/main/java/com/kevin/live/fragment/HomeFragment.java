@@ -44,8 +44,6 @@ public class HomeFragment extends BaseFragment {
     TextView tvTitle;
     @BindView(R.id.iv_function)
     ImageView ivFunction;
-    @BindView(R.id.tv_look_up)
-    TextView tvLookUp;
     @BindView(R.id.mgv_my_grid_view)
     MyGridView mMyGridView;
     @BindView(R.id.tool_bar)

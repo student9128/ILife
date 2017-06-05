@@ -3,7 +3,6 @@ package com.kevin.live.activity;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
@@ -21,9 +20,7 @@ import com.kevin.live.view.NoSmoothViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Handler;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 
 
@@ -36,9 +33,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     private TabLayoutFragmentAdapter mAdapter;
     private List<Fragment> mFragments = new ArrayList<>();
     private int[] mTabImgs = new int[]{R.drawable.ic_home, R.drawable.ic_news, R.drawable.ic_study, R.drawable.ic_me};
-
-    @BindView(R.id.srl_swipe_refresh_layout)
-    SwipeRefreshLayout mSwipeRefresh;
 
     //    @Override
 //    protected void onCreate(Bundle savedInstanceState) {
@@ -64,12 +58,6 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
             mTabLayout.getTabAt(i).setCustomView(mAdapter.getTabView(i));
         }
         mTabLayout.addOnTabSelectedListener(this);
-        mSwipeRefresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
-            @Override
-            public void onRefresh() {
-
-            }
-        });
     }
 
     private void initTabList() {

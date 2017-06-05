@@ -3,6 +3,9 @@ package com.kevin.live.base;
 import android.app.Application;
 import android.content.Context;
 
+import com.android.volley.RequestQueue;
+import com.android.volley.toolbox.Volley;
+
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -39,14 +42,22 @@ public class BaseApplication extends Application {
         return user;
     }
 
+    public static RequestQueue volleyQueue;
+
     @Override
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
+        volleyQueue = Volley.newRequestQueue(getApplicationContext());
     }
 
-    public static void  clearData(){
-       mTotalTitleMap.clear();
+    // 开放Volley的HTTP请求队列接口
+    public static RequestQueue getRequestQueue() {
+        return volleyQueue;
+    }
+
+    public static void clearData() {
+        mTotalTitleMap.clear();
         mTitleMap.clear();
         mValueDatas.clear();
         mTitleList.clear();

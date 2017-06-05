@@ -23,13 +23,14 @@
             app:riv_oval="true" />
 
         <TextView
+            android:id="@+id/tv_about_me"
             android:layout_width="80dp"
             android:layout_height="40dp"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
             android:layout_marginBottom="@dimen/uniform_margin"
             android:background="@drawable/bg_about_me"
-            android:elevation="3dp"
+            android:elevation="5dp"
             android:gravity="center_vertical"
             android:paddingBottom="@dimen/padding_10"
             android:paddingLeft="20dp"
@@ -44,13 +45,14 @@
             android:id="@+id/tv_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="个性签名:以梦为马，煮字为药！"
             android:textColor="@color/black" />
     </LinearLayout>
 
     <LinearLayout style="@style/FragmentMeItemStyle">
 
         <TextView
-            android:id="@+id/tv_text1"
+            android:id="@+id/tv_version_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="版本信息"
@@ -60,10 +62,22 @@
     <LinearLayout style="@style/FragmentMeItemStyle">
 
         <TextView
-            android:id="@+id/tv_text2"
+            android:id="@+id/tv_about"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="关于"
             android:textColor="@color/black" />
     </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@color/colorPrimary"
+        android:elevation="3dp"
+        android:text="退出登录"
+        android:textColor="@color/white" />
 </LinearLayout>

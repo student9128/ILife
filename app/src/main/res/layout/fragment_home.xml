@@ -23,9 +23,4 @@
         android:stretchMode="columnWidth"
         android:verticalSpacing="15dp"></com.kevin.live.view.MyGridView>
 
-    <TextView
-        android:id="@+id/tv_look_up"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:text="手机归属地查询" />
 </LinearLayout>
