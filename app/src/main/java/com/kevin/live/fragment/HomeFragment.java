@@ -27,6 +27,7 @@ import com.kevin.live.base.BaseFragment;
 import com.kevin.live.constant.Constant;
 import com.kevin.live.util.LogK;
 import com.kevin.live.view.MyGridView;
+import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -174,6 +175,7 @@ public class HomeFragment extends BaseFragment {
                         break;
                     case 1:
                     case 2:
+                        CrashReport.testJavaCrash();
                         showToast("正在开发中...");
                         break;
                     case 3://笑话大全
