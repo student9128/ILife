@@ -8,7 +8,12 @@
 
     <!-- Global padding value for all the ui in the application -->
     <dimen name="uniform_padding">16dp</dimen>
-
+    <!-- elevation -->
+    <dimen name="elevation_1">1dp</dimen>
+    <dimen name="elevation_3">3dp</dimen>
+    <dimen name="elevation_5">5dp</dimen>
+    <dimen name="elevation_10">10dp</dimen>
+    <dimen name="elevation_15">15dp</dimen>
     <!-- margin value -->
     <dimen name="margin_5">5dp</dimen>
     <dimen name="margin_10">10dp</dimen>
@@ -18,4 +23,14 @@
     <!-- padding value -->
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_5">5dp</dimen>
+
+    <!--text size-->
+    <dimen name="textSize10">10sp</dimen>
+    <dimen name="textSize12">12sp</dimen>
+    <dimen name="textSize14">14sp</dimen>
+    <dimen name="textSize15">15sp</dimen>
+    <dimen name="textSize16">16sp</dimen>
+    <dimen name="textSize18">18sp</dimen>
+    <dimen name="textSize20">20sp</dimen>
+    <dimen name="textSize24">24sp</dimen>
 </resources>

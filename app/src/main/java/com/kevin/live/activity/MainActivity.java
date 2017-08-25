@@ -61,10 +61,11 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
         initTabList();
         initFragmentList();
-        mAdapter = new TabLayoutFragmentAdapter(getSupportFragmentManager(), this, mFragments, mTabList, mTabImgs, mTabImgsFill);
+        mAdapter = new TabLayoutFragmentAdapter(getSupportFragmentManager(),
+                this, mFragments, mTabList, mTabImgs, mTabImgsFill);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(0);
-        mViewPager.setOffscreenPageLimit(4);
+        mViewPager.setOffscreenPageLimit(3);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         for (int i = 0; i < mTabLayout.getTabCount(); i++) {
@@ -76,8 +77,8 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     private void initTabList() {
         mTabList.clear();
         mTabList.add(getString(R.string.tab_home));
-        mTabList.add(getString(R.string.tab_performance));
-        mTabList.add(getString(R.string.tab_repository));
+        mTabList.add(getString(R.string.tab_news));
+        mTabList.add(getString(R.string.tab_study));
         mTabList.add(getString(R.string.tab_me));
     }
 
@@ -87,8 +88,8 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     public void initFragmentList() {
         mFragments.clear();
         mFragments.add(HomeFragment.newInstance(getString(R.string.tab_home)));
-        mFragments.add(NewsFragment.newInstance(getString(R.string.tab_performance)));
-        mFragments.add(StudyFragment.newInstance(getString(R.string.tab_repository)));
+        mFragments.add(NewsFragment.newInstance(getString(R.string.tab_news)));
+        mFragments.add(StudyFragment.newInstance(getString(R.string.tab_study)));
         mFragments.add(MeFragment.newInstance(getString(R.string.tab_me)));
 
     }
@@ -125,23 +126,25 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         ImageView tabIconFill = (ImageView) customView.findViewById(R.id.iv_tab_icon_fill);
         tabText.setTextColor(ContextCompat.getColor(this, R.color.colorPrimary));
         String s = tabText.getText().toString();
-        if (getString(R.string.tab_home).equals(s)) {
-//            tabIcon.setImageResource(R.drawable.ic_home_fill);
-            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
-            tabIconFill.setAlpha(1f);
-        } else if (getString(R.string.tab_performance).equals(s)) {
-//            tabIcon.setImageResource(R.drawable.ic_news_fill);
-            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
-            tabIconFill.setAlpha(1f);
-        } else if (getString(R.string.tab_repository).equals(s)) {
-            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
-            tabIconFill.setAlpha(1f);
-//            tabIcon.setImageResource(R.drawable.ic_study_fill);
-        } else if (getString(R.string.tab_me).equals(s)) {
-            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
-            tabIconFill.setAlpha(1f);
-//            tabIcon.setImageResource(R.drawable.ic_me_fill);
-        }
+        tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
+        tabIconFill.setAlpha(1f);
+//        if (getString(R.string.tab_home).equals(s)) {
+////            tabIcon.setImageResource(R.drawable.ic_home_fill);
+//            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
+//            tabIconFill.setAlpha(1f);
+//        } else if (getString(R.string.tab_performance).equals(s)) {
+////            tabIcon.setImageResource(R.drawable.ic_news_fill);
+//            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
+//            tabIconFill.setAlpha(1f);
+//        } else if (getString(R.string.tab_repository).equals(s)) {
+//            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
+//            tabIconFill.setAlpha(1f);
+////            tabIcon.setImageResource(R.drawable.ic_study_fill);
+//        } else if (getString(R.string.tab_me).equals(s)) {
+//            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
+//            tabIconFill.setAlpha(1f);
+////            tabIcon.setImageResource(R.drawable.ic_me_fill);
+//        }
     }
 
     private void setTabUnSelectedState(TabLayout.Tab tab) {

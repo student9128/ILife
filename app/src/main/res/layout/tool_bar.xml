@@ -10,6 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/colorPrimary"
+        android:elevation="@dimen/elevation_5"
         app:navigationIcon="@drawable/ic_back_m">
 
         <!--<ImageView-->
@@ -37,9 +38,9 @@
             android:layout_gravity="end"
             android:background="@drawable/bg_select_state_title_bar_right"
             android:clickable="true"
-            android:visibility="gone"
             android:padding="@dimen/uniform_padding"
-            android:src="@drawable/ic_search" />
+            android:src="@drawable/ic_search"
+            android:visibility="gone" />
 
     </android.support.v7.widget.Toolbar>
 </LinearLayout>

@@ -88,7 +88,7 @@ public class JokeActivity extends BaseActivity {
     public void initFragmentList() {
         mFragments.clear();
         mFragments.add(JokeByTimeFragment.newInstance(getString(R.string.tab_home)));
-        mFragments.add(JokeWithPicFragment.newInstance(getString(R.string.tab_performance)));
+        mFragments.add(JokeWithPicFragment.newInstance(getString(R.string.tab_news)));
 //        mFragments.add(StudyFragment.newInstance(getString(R.string.tab_repository)));
 //        mFragments.add(MeFragment.newInstance(getString(R.string.tab_me)));
 

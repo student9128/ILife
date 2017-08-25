@@ -16,7 +16,8 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/BaseTheme">
-        <activity android:name="com.kevin.live.activity.MainActivity">
+        <activity android:name="com.kevin.live.activity.MainActivity"
+            >
 
         </activity>
         <activity android:name="com.kevin.live.activity.SplashActivity">
@@ -33,6 +34,8 @@
         <activity android:name=".activity.MobileLookUpActivity" />
         <activity android:name=".activity.CityBusActivity" />
         <activity android:name=".activity.JokeActivity" />
+        <activity android:name=".activity.TestActivity"
+            android:theme="@style/BaseTheme1"/>
     </application>
 
 </manifest>

@@ -5,79 +5,94 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include layout="@layout/title_bar_me" />
+    <include layout="@layout/tool_bar" />
 
-    <RelativeLayout
-        android:id="@+id/rl_user_info"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:background="@color/colorPrimary">
+        android:layout_height="match_parent">
 
-        <com.kevin.live.view.circleimageview.RoundedImageView
-            android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_centerInParent="true"
-            android:src="@drawable/ic_avatar"
-            app:riv_border_color="@color/transparent"
-            app:riv_border_width="1px"
-            app:riv_oval="true" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-        <TextView
-            android:id="@+id/tv_about_me"
-            android:layout_width="80dp"
-            android:layout_height="40dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentEnd="true"
-            android:layout_marginBottom="@dimen/uniform_margin"
-            android:background="@drawable/bg_about_me"
-            android:elevation="5dp"
-            android:gravity="center_vertical"
-            android:paddingBottom="@dimen/padding_10"
-            android:paddingLeft="20dp"
-            android:paddingTop="@dimen/padding_10"
-            android:text="关于我"
-            android:textColor="@color/colorPrimary" />
-    </RelativeLayout>
 
-    <LinearLayout style="@style/FragmentMeItemStyle">
+            <RelativeLayout
+                android:id="@+id/rl_user_info"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:background="@color/colorPrimary">
 
-        <TextView
-            android:id="@+id/tv_text"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="个性签名:以梦为马，煮字为药！"
-            android:textColor="@color/black" />
-    </LinearLayout>
+                <com.kevin.live.view.circleimageview.RoundedImageView
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/ic_avatar"
+                    app:riv_border_color="@color/transparent"
+                    app:riv_border_width="1px"
+                    app:riv_oval="true" />
 
-    <LinearLayout style="@style/FragmentMeItemStyle">
+                <TextView
+                    android:id="@+id/tv_about_me"
+                    android:layout_width="80dp"
+                    android:layout_height="40dp"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginBottom="@dimen/uniform_margin"
+                    android:background="@drawable/bg_about_me"
+                    android:elevation="5dp"
+                    android:gravity="center_vertical"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingLeft="20dp"
+                    android:paddingTop="@dimen/padding_10"
+                    android:text="关于我"
+                    android:textColor="@color/colorPrimary" />
+            </RelativeLayout>
 
-        <TextView
-            android:id="@+id/tv_version_info"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="版本信息"
-            android:textColor="@color/black" />
-    </LinearLayout>
+            <LinearLayout style="@style/FragmentMeItemStyle">
 
-    <LinearLayout style="@style/FragmentMeItemStyle">
+                <TextView
+                    android:id="@+id/tv_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="个性签名:以梦为马，煮字为药！"
+                    android:textColor="@color/black" />
+            </LinearLayout>
 
-        <TextView
-            android:id="@+id/tv_about"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="关于"
-            android:textColor="@color/black" />
-    </LinearLayout>
+            <LinearLayout style="@style/FragmentMeItemStyle">
 
-    <Button
-        android:id="@+id/btn_logout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="10dp"
-        android:background="@color/colorPrimary"
-        android:elevation="3dp"
-        android:text="退出登录"
-        android:textColor="@color/white" />
+                <TextView
+                    android:id="@+id/tv_version_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="版本信息"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <LinearLayout style="@style/FragmentMeItemStyle">
+
+                <TextView
+                    android:id="@+id/tv_about"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center_vertical"
+                    android:text="关于"
+                    android:textColor="@color/black" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btn_logout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginRight="50dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/colorPrimary"
+                android:elevation="3dp"
+                android:text="退出登录"
+                android:textColor="@color/white" />
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

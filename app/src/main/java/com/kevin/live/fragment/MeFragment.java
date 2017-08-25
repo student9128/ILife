@@ -1,7 +1,11 @@
 package com.kevin.live.fragment;
 
+import android.animation.ObjectAnimator;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -20,8 +24,6 @@ import butterknife.BindView;
  */
 
 public class MeFragment extends BaseFragment implements View.OnClickListener {
-    @BindView(R.id.iv_back)
-    ImageView mIvBack;
     @BindView(R.id.tv_title)
     TextView mTvTitle;
     @BindView(R.id.iv_function)
@@ -34,6 +36,12 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     TextView mTvVersionInfo;
     @BindView(R.id.tv_about)
     TextView mTvAbout;
+    @BindView(R.id.tool_bar)
+    Toolbar mToolbar;
+    @BindView(R.id.tv_about_me)
+    TextView tvAboutMe;
+    @BindView(R.id.btn_logout)
+    Button btnLogout;
     private CheckDialog mDialog;
 
     public static MeFragment newInstance(String s) {
@@ -51,18 +59,28 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
 
     @Override
     public void initView() {
+        AppCompatActivity activity = (AppCompatActivity) this.mActivity;
+        activity.setSupportActionBar(mToolbar);
+        activity.getSupportActionBar().setTitle(null);
+        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
 
     }
 
     @Override
     public void initData() {
+        mTvTitle.setText(getString(R.string.title_me));
         mDialog = new CheckDialog(mActivity);
+        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(tvAboutMe, "translationX", 250f, 0.0f);
+        objectAnimator.setDuration(2000)
+                .setStartDelay(1000);
+        objectAnimator.start();
 
     }
 
     @Override
     public void initListener() {
         mTvAbout.setOnClickListener(this);
+        btnLogout.setOnClickListener(this);
 
     }
 
@@ -72,7 +90,14 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.tv_about:
                 mDialog.setTitleText("关于");
+                showToast("About");
                 mDialog.show();
+                break;
+            case R.id.btn_logout:
+                showToast("Logout");
+
+                break;
+            default:
                 break;
         }
     }

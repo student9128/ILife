@@ -21,13 +21,13 @@ import com.kevin.live.R;
 import com.kevin.live.activity.CityBusActivity;
 import com.kevin.live.activity.JokeActivity;
 import com.kevin.live.activity.MobileLookUpActivity;
+import com.kevin.live.activity.TestActivity;
 import com.kevin.live.adapter.HomeGridViewAdapter;
 import com.kevin.live.adapter.MyViewPagerAdapter;
 import com.kevin.live.base.BaseFragment;
 import com.kevin.live.constant.Constant;
 import com.kevin.live.util.LogK;
 import com.kevin.live.view.MyGridView;
-import com.tencent.bugly.crashreport.CrashReport;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -82,7 +82,6 @@ public class HomeFragment extends BaseFragment {
     public void initView() {
 
         AppCompatActivity activity = (AppCompatActivity) this.mActivity;
-//        mToolbar.setTitle(null);
         activity.setSupportActionBar(mToolbar);
         activity.getSupportActionBar().setTitle(null);
         activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
@@ -156,7 +155,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void initData() {
-        tvTitle.setText("首页");
+        tvTitle.setText(getString(R.string.title_home));
         mGridViewIcon = new int[]{R.drawable.ic_bus, R.drawable.ic_dictionary, R.drawable.ic_food, R.drawable.ic_joker,
                 R.drawable.ic_location, R.drawable.ic_lottery, R.drawable.ic_nba, R.drawable.ic_tv};
         mGridViewTitle = new String[]{"公交", "字典&翻译", "食谱", "笑话大全", "号码归属", "彩票", "NBA", "电视节目"};
@@ -175,7 +174,7 @@ public class HomeFragment extends BaseFragment {
                         break;
                     case 1:
                     case 2:
-                        CrashReport.testJavaCrash();
+                        startActivity(new Intent(mActivity, TestActivity.class));
                         showToast("正在开发中...");
                         break;
                     case 3://笑话大全
