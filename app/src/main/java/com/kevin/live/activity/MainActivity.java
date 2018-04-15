@@ -65,7 +65,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
                 this, mFragments, mTabList, mTabImgs, mTabImgsFill);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(0);
-        mViewPager.setOffscreenPageLimit(3);
+        mViewPager.setOffscreenPageLimit(0);
         mTabLayout.setupWithViewPager(mViewPager);
         mTabLayout.setTabMode(TabLayout.MODE_FIXED);
         for (int i = 0; i < mTabLayout.getTabCount(); i++) {

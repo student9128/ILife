@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -43,6 +44,7 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     @BindView(R.id.btn_logout)
     Button btnLogout;
     private CheckDialog mDialog;
+    private static boolean isVisible = false;
 
     public static MeFragment newInstance(String s) {
         MeFragment fragment = new MeFragment();
@@ -70,11 +72,6 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
     public void initData() {
         mTvTitle.setText(getString(R.string.title_me));
         mDialog = new CheckDialog(mActivity);
-        ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(tvAboutMe, "translationX", 250f, 0.0f);
-        objectAnimator.setDuration(2000)
-                .setStartDelay(1000);
-        objectAnimator.start();
-
     }
 
     @Override
@@ -84,6 +81,30 @@ public class MeFragment extends BaseFragment implements View.OnClickListener {
 
     }
 
+    @Override
+    public void setUserVisibleHint(boolean isVisibleToUser) {
+        super.setUserVisibleHint(isVisibleToUser);
+        if (isVisibleToUser) {
+            if (!isVisible) {
+            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(tvAboutMe, "translationX", 0.0f, -220.0f);
+            objectAnimator.setDuration(500);
+            objectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+            objectAnimator.start();
+                isVisible = !isVisible;
+            }
+        }
+    }
+//
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (hidden) {
+//            ObjectAnimator objectAnimator = ObjectAnimator.ofFloat(tvAboutMe, "translationX", 0.0f, 250.0f);
+//            objectAnimator.setDuration(2000);
+//            objectAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
+//            objectAnimator.start();
+//        }
+//    }
 
     @Override
     public void onClick(View v) {

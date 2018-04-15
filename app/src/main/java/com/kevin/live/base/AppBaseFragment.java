@@ -37,14 +37,6 @@ public class AppBaseFragment extends Fragment {
         mActivity = getActivity();
     }
 
-    public String getUserCode() {
-        return BaseApplication.getUser().getUserCode();
-    }
-
-    public String getToken() {
-        return BaseApplication.getUser().getToken();
-    }
-
     /**
      * check network is available.
      *

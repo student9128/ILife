@@ -25,11 +25,11 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/bg_select_state_tab"
-            app:tabTextColor="@color/black"
             android:elevation="@dimen/elevation_3"
-            app:tabSelectedTextColor="@color/colorPrimary"
             app:tabIndicatorColor="@null"
-            app:tabTextAppearance="@style/TabTextAppearanceStyle"></com.kevin.live.view.ColorTrackTabLayout>
+            app:tabSelectedTextColor="@color/colorPrimary"
+            app:tabTextAppearance="@style/TabTextAppearanceStyle"
+            app:tabTextColor="@color/black"></com.kevin.live.view.ColorTrackTabLayout>
     </android.support.design.widget.AppBarLayout>
 
     <com.kevin.live.view.NoSmoothViewPager

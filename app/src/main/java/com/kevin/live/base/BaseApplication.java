@@ -19,20 +19,12 @@ import com.tencent.bugly.crashreport.CrashReport;
 
 public class BaseApplication extends Application {
     private static Context mContext;
-    private static User user;
 
 
     public static Context getContext() {
         return mContext;
     }
 
-    public static void setUser(User user) {
-        BaseApplication.user = user;
-    }
-
-    public static User getUser() {
-        return user;
-    }
 
     public static RequestQueue volleyQueue;
 

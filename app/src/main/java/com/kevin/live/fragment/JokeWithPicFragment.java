@@ -6,19 +6,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
 import com.alibaba.fastjson.JSON;
-import com.android.volley.AuthFailureError;
-import com.android.volley.Request;
 import com.android.volley.RequestQueue;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.kevin.live.R;
 import com.kevin.live.adapter.JokeWithPicAdapter;
 import com.kevin.live.base.BaseFragment;
 import com.kevin.live.bean.JokeWithPicBean;
 import com.kevin.live.constant.Constant;
+import com.kevin.live.http.HttpResponseListener;
 import com.kevin.live.http.Urls;
+import com.kevin.live.http.VolleyUtil;
 import com.kevin.live.util.LogK;
 
 import java.util.ArrayList;
@@ -80,9 +77,14 @@ public class JokeWithPicFragment extends BaseFragment {
     }
 
     private void doPostQryJoke() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.JOKE_NEWS_IMG, new Response.Listener<String>() {
+        Map<String, String> map = new HashMap<>();
+
+        map.put("key", "0933128229dd416daf447c564d65eb92");
+        map.put("dtype", "JSON");
+
+        VolleyUtil.stringRequestByPost(mActivity, Urls.JOKE_NEWS_IMG, null, map, new HttpResponseListener() {
             @Override
-            public void onResponse(String response) {
+            public void onSuccess(String response) {
                 LogK.i("TAG", response);
                 JokeWithPicBean jokeWithPicBean = JSON.parseObject(response, JokeWithPicBean.class);
                 int errorCode = jokeWithPicBean.getError_code();
@@ -97,31 +99,58 @@ public class JokeWithPicFragment extends BaseFragment {
                     mRecyclerView.setAdapter(jokeAdapter);
 
                 } else {
+                    showToast(errorCode+"=="+reason);
                 }
-
             }
-        }, new Response.ErrorListener() {
+
             @Override
-            public void onErrorResponse(VolleyError error) {
+            public void onFailure(Exception e) {
                 mSwipeRefresh.setRefreshing(false);
                 showToast("请求失败");
             }
-        }) {
-            @Override
-            protected Map<String, String> getParams() throws AuthFailureError {
-                Map<String, String> map = new HashMap<>();
+        });
+//        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.JOKE_NEWS_IMG, new Response.Listener<String>() {
+//            @Override
+//            public void onResponse(String response) {
+//                LogK.i("TAG", response);
+//                JokeWithPicBean jokeWithPicBean = JSON.parseObject(response, JokeWithPicBean.class);
+//                int errorCode = jokeWithPicBean.getError_code();
+//                String reason = jokeWithPicBean.getReason();
+//
+//                if (0 == errorCode) {
+//                    mSwipeRefresh.setRefreshing(false);
+//                    List<JokeWithPicBean.ResultBean> result = jokeWithPicBean.getResult();
+//                    mData.clear();
+//                    mData.addAll(result);
+//                    JokeWithPicAdapter jokeAdapter = new JokeWithPicAdapter(mActivity, mData);
+//                    mRecyclerView.setAdapter(jokeAdapter);
+//
+//                } else {
+//                }
+//
+//            }
+//        }, new Response.ErrorListener() {
+//            @Override
+//            public void onErrorResponse(VolleyError error) {
+//                mSwipeRefresh.setRefreshing(false);
+//                showToast("请求失败");
+//            }
+//        }) {
+//            @Override
+//            protected Map<String, String> getParams() throws AuthFailureError {
+//                Map<String, String> map = new HashMap<>();
+//
+//                map.put("key", "0933128229dd416daf447c564d65eb92");
+////                map.put("time", "1418745237");
+////                map.put("time", String.valueOf(System.currentTimeMillis()).substring(0, 10));
+////                map.put("sort", "desc");
+////                map.put("page", 2);
+////                map.put("rows", 10);
+//                map.put("dtype", "JSON");
+//                return map;
+//            }
+//        };
 
-                map.put("key", "0933128229dd416daf447c564d65eb92");
-//                map.put("time", "1418745237");
-//                map.put("time", String.valueOf(System.currentTimeMillis()).substring(0, 10));
-//                map.put("sort", "desc");
-//                map.put("page", 2);
-//                map.put("rows", 10);
-                map.put("dtype", "JSON");
-                return map;
-            }
-        };
-
-        mQueue.add(stringRequest);
+//        mQueue.add(stringRequest);
     }
 }

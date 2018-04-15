@@ -39,6 +39,7 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentEnd="true"
                     android:layout_marginBottom="@dimen/uniform_margin"
+                    android:layout_marginRight="-80dp"
                     android:background="@drawable/bg_about_me"
                     android:elevation="5dp"
                     android:gravity="center_vertical"
