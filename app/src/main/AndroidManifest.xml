@@ -37,6 +37,8 @@
         <activity
             android:name=".activity.TestActivity"
             android:theme="@style/BaseTheme1" />
+        <activity android:name=".activity.LotteryListActivity"/>
+        <activity android:name=".activity.LotteryDetailActivity"/>
     </application>
 
 </manifest>

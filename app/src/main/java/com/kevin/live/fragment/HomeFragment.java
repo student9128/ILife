@@ -20,6 +20,7 @@ import android.widget.TextView;
 import com.kevin.live.R;
 import com.kevin.live.activity.CityBusActivity;
 import com.kevin.live.activity.JokeActivity;
+import com.kevin.live.activity.LotteryListActivity;
 import com.kevin.live.activity.MobileLookUpActivity;
 import com.kevin.live.activity.TestActivity;
 import com.kevin.live.adapter.HomeGridViewAdapter;
@@ -185,7 +186,8 @@ public class HomeFragment extends BaseFragment {
                         startActivity(new Intent(mActivity, MobileLookUpActivity.class));
                         break;
                     case 5:
-                        showToast("正在开发中...");
+//                        showToast("正在开发中...");
+                        startNewActivity(LotteryListActivity.class);
                         break;
                     case 6:
                         break;

@@ -14,30 +14,35 @@ import com.kevin.live.base.BaseActivity;
  * Description:
  */
 
-public class SearchActivity extends BaseActivity implements View.OnClickListener {
+public class SearchActivity extends BaseActivity{
     //    private Toolbar mToolbar;
     private ImageView mFunction, mBack;
 
+//    @Override
+//    protected void onCreate(@Nullable Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_search);
+////        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
+////        mToolbar.setTitle(" ");
+////        setSupportActionBar(mToolbar);
+////        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+////        mToolbar.setNavigationIcon(R.drawable.ic_back);
+////        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+////            @Override
+////            public void onClick(View v) {
+////                onBackPressed();
+////            }
+////        });
+//        mBack = (ImageView) findViewById(R.id.iv_back);
+//        mBack.setVisibility(View.VISIBLE);
+//        mBack.setOnClickListener(this);
+//        mFunction = (ImageView) findViewById(R.id.iv_function);
+//        mFunction.setVisibility(View.GONE);
+//    }
+
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
-//        mToolbar = (Toolbar) findViewById(R.id.tool_bar);
-//        mToolbar.setTitle(" ");
-//        setSupportActionBar(mToolbar);
-//        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-//        mToolbar.setNavigationIcon(R.drawable.ic_back);
-//        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                onBackPressed();
-//            }
-//        });
-        mBack = (ImageView) findViewById(R.id.iv_back);
-        mBack.setVisibility(View.VISIBLE);
-        mBack.setOnClickListener(this);
-        mFunction = (ImageView) findViewById(R.id.iv_function);
-        mFunction.setVisibility(View.GONE);
+    public int setLayoutResId() {
+        return R.layout.activity_search;
     }
 
     @Override
@@ -55,12 +60,4 @@ public class SearchActivity extends BaseActivity implements View.OnClickListener
 
     }
 
-    @Override
-    public void onClick(View v) {
-        switch (v.getId()) {
-            case R.id.iv_back:
-                onBackPressed();
-                break;
-        }
-    }
 }

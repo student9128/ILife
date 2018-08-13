@@ -41,8 +41,12 @@ public class JokeActivity extends BaseActivity {
     Toolbar mToolBar;
 
     @Override
+    public int setLayoutResId() {
+        return R.layout.activity_joke;
+    }
+
+    @Override
     public void initView() {
-        setContentView(R.layout.activity_joke);
         ButterKnife.bind(this);
         mToolBar.setTitle("");
         setSupportActionBar(mToolBar);

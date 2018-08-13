@@ -8,6 +8,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -52,10 +53,13 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
     private int mGreenBlue;
 
     @Override
-    public void initView() {
+    public int setLayoutResId() {
+        return R.layout.activity_main;
+    }
 
-        setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+    @Override
+    public void initView() {
+        llToolbar.setVisibility(View.GONE);
         mContainer = (LinearLayout) findViewById(R.id.activity_main);
         mViewPager = (NoSmoothViewPager) findViewById(R.id.ns_view_pager);
         mTabLayout = (TabLayout) findViewById(R.id.tab_layout);
@@ -128,23 +132,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         String s = tabText.getText().toString();
         tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
         tabIconFill.setAlpha(1f);
-//        if (getString(R.string.tab_home).equals(s)) {
-////            tabIcon.setImageResource(R.drawable.ic_home_fill);
-//            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
-//            tabIconFill.setAlpha(1f);
-//        } else if (getString(R.string.tab_performance).equals(s)) {
-////            tabIcon.setImageResource(R.drawable.ic_news_fill);
-//            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
-//            tabIconFill.setAlpha(1f);
-//        } else if (getString(R.string.tab_repository).equals(s)) {
-//            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
-//            tabIconFill.setAlpha(1f);
-////            tabIcon.setImageResource(R.drawable.ic_study_fill);
-//        } else if (getString(R.string.tab_me).equals(s)) {
-//            tabIcon.setColorFilter(mGreenColor, PorterDuff.Mode.SRC_IN);
-//            tabIconFill.setAlpha(1f);
-////            tabIcon.setImageResource(R.drawable.ic_me_fill);
-//        }
+
     }
 
     private void setTabUnSelectedState(TabLayout.Tab tab) {
@@ -156,15 +144,7 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         String s = tabText.getText().toString();
         tabIcon.setColorFilter(mGrayColor, PorterDuff.Mode.SRC_IN);
         tabIconFill.setAlpha(0f);
-//        if (getString(R.string.tab_home).equals(s)) {
-//            tabIcon.setImageResource(R.drawable.ic_home);
-//        } else if (getString(R.string.tab_performance).equals(s)) {
-//            tabIcon.setImageResource(R.drawable.ic_news);
-//        } else if (getString(R.string.tab_repository).equals(s)) {
-//            tabIcon.setImageResource(R.drawable.ic_study);
-//        } else if (getString(R.string.tab_me).equals(s)) {
-//            tabIcon.setImageResource(R.drawable.ic_me);
-//        }
+
     }
 
     @Override
@@ -265,5 +245,24 @@ public class MainActivity extends BaseActivity implements TabLayout.OnTabSelecte
         int blue = (int) (positionOffset * (mGrayBlue - mGreenBlue) * 2 + 2 * mGreenBlue - mGrayBlue);
 //        Log.d("why ", "#### " + red + "  " + green + "  " + blue);
         return Color.argb(255, red, green, blue);
+    }
+
+    private long lastTime = 0;
+    /**
+     * 菜单、返回键响应,双击退出函数
+     */
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK
+                && event.getAction() == KeyEvent.ACTION_DOWN) {
+            if ((System.currentTimeMillis() - lastTime) > 2000) {
+                showToast(getString(R.string.exit_app_tip));
+                lastTime = System.currentTimeMillis();
+            } else {
+                finish();
+            }
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
     }
 }

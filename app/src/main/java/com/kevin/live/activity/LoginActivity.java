@@ -11,6 +11,7 @@ import com.kevin.live.R;
 import com.kevin.live.base.BaseActivity;
 import com.kevin.live.util.TypeFaceUtils;
 import com.kevin.live.view.CaseViewDialog;
+import com.tencent.bugly.crashreport.CrashReport;
 
 /**
  * Created by <b><a style="color:#8BC34A"href="http://blog.csdn.net/student9128">Kevin</a></b> on 2017/3/17.
@@ -31,8 +32,13 @@ public class LoginActivity extends BaseActivity implements View.OnClickListener,
 //    }
 
     @Override
+    public int setLayoutResId() {
+        return R.layout.activity_login;
+    }
+
+    @Override
     public void initView() {
-        setContentView(R.layout.activity_login);
+        llToolbar.setVisibility(View.GONE);
         mTvLogo = (TextView) findViewById(R.id.tv_app_logo);
 //        Typeface type = Typeface.createFromAsset(getAssets(), "VastShadow-Regular.ttf");
 //        mTvLogo.setTypeface(type);

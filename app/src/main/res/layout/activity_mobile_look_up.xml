@@ -83,13 +83,12 @@
         style="@style/MobileNumberInfoStyle" />
 
     <TextView
-        android:id="@+id/tv_type"
-
+        android:id="@+id/tv_operator"
         style="@style/MobileNumberInfoStyle" />
-
     <TextView
-        android:id="@+id/tv_zone_number"
+        android:id="@+id/tv_cityCode"
         style="@style/MobileNumberInfoStyle" />
+
 
     <TextView
         android:id="@+id/tv_postcode"

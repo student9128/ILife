@@ -1,9 +1,23 @@
 apply plugin: 'com.android.application'
 apply plugin: 'bugly'
 
+def getProps(String key){
+getLocalValue(key,false)
+}
+def getLocalValue(String key,boolean quote) {
+    Properties properties = new Properties()
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
+
+    def value = properties.contains(key)?properties.get(key):""
+    if (quote){
+        value = "\""+value+"\""
+    }
+    return value
+}
+
 bugly {
-    appId = 'b1ebc71639' // 注册时分配的App ID
-    appKey = 'cde11f24-6dfc-4c09-8514-b6420030bf6f' // 注册时分配的App Key
+    appId = getProps("BUGLY_APP_ID") // 注册时分配的App ID
+    appKey = getProps("BUGLY_APP_KEY") // 注册时分配的App Key
     debug = true//open debug mode
 }
 
@@ -14,33 +28,37 @@ def RELEASE_STORE_PASSWORD = ''
 // default keystore file, PLZ config file path in local.properties
 def RELEASE_STORE_FILE = file('s.keystore.temp')
 
-Properties properties = new Properties()
+//Properties properties = new Properties()
 // local.properties file in the root director
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-keystoreFilepath = properties.getProperty("RELEASE_STORE_FILE")
+//properties.load(project.rootProject.file('local.properties').newDataInputStream())
+//keystoreFilepath = properties.getProperty("RELEASE_STORE_FILE")
+keystoreFilepath = getProps("RELEASE_STORE_FILE")
 
 if (keystoreFilepath) {
-    RELEASE_KEY_PASSWORD = properties.getProperty("RELEASE_KEY_PASSWORD")
-    RELEASE_KEY_ALIAS = properties.getProperty("RELEASE_KEY_ALIAS")
-    RELEASE_STORE_PASSWORD = properties.getProperty("RELEASE_STORE_PASSWORD")
-    RELEASE_STORE_FILE = file(keystoreFilepath)
+//    RELEASE_KEY_PASSWORD = properties.getProperty("RELEASE_KEY_PASSWORD")
+//    RELEASE_KEY_ALIAS = properties.getProperty("RELEASE_KEY_ALIAS")
+//    RELEASE_STORE_PASSWORD = properties.getProperty("RELEASE_STORE_PASSWORD")
+    RELEASE_KEY_PASSWORD = getProps("RELEASE_KEY_PASSWORD")
+    RELEASE_KEY_ALIAS = getProps("RELEASE_KEY_ALIAS")
+    RELEASE_STORE_PASSWORD = getProps("RELEASE_STORE_PASSWORD")
 }
 android {
     signingConfigs {
         release {
             keyAlias RELEASE_KEY_ALIAS
             keyPassword RELEASE_KEY_PASSWORD
-            storeFile file(RELEASE_STORE_FILE)
+//            storeFile file(RELEASE_STORE_FILE)
+            storeFile file("keylife.jks")
             storePassword RELEASE_STORE_PASSWORD
         }
     }
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
     useLibrary 'org.apache.http.legacy'
     defaultConfig {
         applicationId "com.kevin.live"
         minSdkVersion 21
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -62,18 +80,18 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.2.0'
+    compile 'com.android.support:appcompat-v7:27.0.2'
     testCompile 'junit:junit:4.12'
-    compile 'com.android.support:design:25.2.0'
+    compile 'com.android.support:design:27.0.2'
     compile 'com.android.volley:volley:1.0.0'
     compile 'com.jakewharton:butterknife:8.5.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.alibaba:fastjson:1.2.31'
-    compile 'com.android.support:recyclerview-v7:25.2.0'
-    compile 'com.android.support:cardview-v7:25.2.0'
+    compile 'com.android.support:recyclerview-v7:27.0.2'
+    compile 'com.android.support:cardview-v7:27.0.2'
     compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile 'com.android.support:support-v4:25.2.0'
+    compile 'com.android.support:support-v4:27.0.2'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'com.tencent.bugly:crashreport:2.6.5'
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0

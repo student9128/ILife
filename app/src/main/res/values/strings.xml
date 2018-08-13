@@ -2,10 +2,10 @@
     <string name="app_name">Life!</string>
 
 
-    <string name="title_home">Life!===>首页</string>
-    <string name="title_news">Life!===>资讯</string>
-    <string name="title_study">Life!===>学习</string>
-    <string name="title_me">Life!===>我的</string>
+    <string name="title_home">首页</string>
+    <string name="title_news">资讯</string>
+    <string name="title_study">学习</string>
+    <string name="title_me">我的</string>
 
 
     <string name="tab_home">首页</string>
@@ -26,4 +26,6 @@
     <string name="tab_study_android">Android</string>
     <string name="tab_study_kotlin">Kotlin</string>
     <string name="tab_study_react_native">React Native</string>
+
+    <string name="exit_app_tip">再点一次退出Life</string>
 </resources>

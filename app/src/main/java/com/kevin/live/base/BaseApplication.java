@@ -5,6 +5,7 @@ import android.content.Context;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
+import com.kevin.live.http.util.VolleyUtils;
 import com.tencent.bugly.crashreport.CrashReport;
 
 /**
@@ -34,6 +35,7 @@ public class BaseApplication extends Application {
         CrashReport.initCrashReport(getApplicationContext(), "b1ebc71639", true);
         mContext = getApplicationContext();
         volleyQueue = Volley.newRequestQueue(getApplicationContext());
+        VolleyUtils.getInstance(this);
     }
 
     // 开放Volley的HTTP请求队列接口

@@ -5,6 +5,8 @@
     android:background="@color/white"
     android:orientation="vertical">
 
+    <include layout="@layout/tool_bar" />
+
     <TextView
         android:id="@+id/tv_app_logo"
         android:layout_width="match_parent"

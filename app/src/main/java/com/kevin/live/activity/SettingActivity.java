@@ -14,6 +14,11 @@ import com.kevin.live.base.BaseActivity;
 
 public class SettingActivity extends BaseActivity {
     @Override
+    public int setLayoutResId() {
+        return 0;
+    }
+
+    @Override
     public void initView() {
 
     }

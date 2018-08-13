@@ -34,12 +34,12 @@ import butterknife.BindView;
  */
 
 public class NewsFragment extends BaseFragment implements TabLayout.OnTabSelectedListener, ViewPager.OnPageChangeListener {
-    @BindView(R.id.tool_bar)
-    Toolbar mToolbar;
-    @BindView(R.id.tv_title)
-    TextView mTvTitle;
-    @BindView(R.id.iv_function)
-    ImageView mIvFunction;
+//    @BindView(R.id.tool_bar)
+//    Toolbar mToolbar;
+//    @BindView(R.id.tv_title)
+//    TextView mTvTitle;
+//    @BindView(R.id.iv_function)
+//    ImageView mIvFunction;
     @BindView(R.id.tab_layout)
     TabLayout mTabLayout;
     @BindView(R.id.ns_view_pager)
@@ -78,10 +78,10 @@ public class NewsFragment extends BaseFragment implements TabLayout.OnTabSelecte
 
     @Override
     public void initView() {
-        AppCompatActivity activity = (AppCompatActivity) this.mActivity;
-        activity.setSupportActionBar(mToolbar);
-        activity.getSupportActionBar().setTitle(null);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+//        AppCompatActivity activity = (AppCompatActivity) this.mActivity;
+//        activity.setSupportActionBar(mToolbar);
+//        activity.getSupportActionBar().setTitle(null);
+//        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(false);
         initTabList();
         initFragmentList();
         mAdapter = new TabLayoutNewsFragmentAdapter(getChildFragmentManager(),
@@ -125,7 +125,7 @@ public class NewsFragment extends BaseFragment implements TabLayout.OnTabSelecte
 
     @Override
     public void initData() {
-        mTvTitle.setText(getString(R.string.title_news));
+//        mTvTitle.setText(getString(R.string.title_news));
         initColor();
     }
 

@@ -1,6 +1,7 @@
 package com.kevin.live.base;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Build;
 import android.os.Bundle;
@@ -90,6 +91,14 @@ public abstract class BaseFragment extends AppBaseFragment {
 //    public abstract void refreshUI();
 
     //===============Some Methods=================//
+
+    /**
+     * 跳转到对应的activity
+     * @param clazz
+     */
+    public void startNewActivity(Class<? extends BaseActivity> clazz) {
+        startActivity(new Intent(mActivity, clazz));
+    }
 
     /**
      * 刷新 StatusBar

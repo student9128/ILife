@@ -35,3 +35,5 @@
 -keepclasseswithmembernames class * {
     @butterknife.* <methods>;
 }
+
+-keep public class com.kevin.live.bean.**{*;}

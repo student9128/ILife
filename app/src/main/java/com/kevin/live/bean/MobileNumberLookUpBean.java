@@ -12,16 +12,24 @@ package com.kevin.live.bean;
 
 public class MobileNumberLookUpBean {
 
+
     /**
-     * result : {"mobilenumber":"1821778","mobilearea":"上海","mobiletype":"移动182卡","areacode":"021","postcode":"200000"}
-     * error_code : 0
-     * reason : Succes
+     * msg : success
+     * result : {"city":"深圳市","cityCode":"0755","mobileNumber":"1308888","operator":"联通130卡","province":"广东","zipCode":"518000"}
+     * retCode : 200
      */
 
-
+    private String msg;
     private ResultBean result;
-    private int error_code;
-    private String reason;
+    private String retCode;
+
+    public String getMsg() {
+        return msg;
+    }
+
+    public void setMsg(String msg) {
+        this.msg = msg;
+    }
 
     public ResultBean getResult() {
         return result;
@@ -31,75 +39,77 @@ public class MobileNumberLookUpBean {
         this.result = result;
     }
 
-    public int getError_code() {
-        return error_code;
+    public String getRetCode() {
+        return retCode;
     }
 
-    public void setError_code(int error_code) {
-        this.error_code = error_code;
-    }
-
-    public String getReason() {
-        return reason;
-    }
-
-    public void setReason(String reason) {
-        this.reason = reason;
+    public void setRetCode(String retCode) {
+        this.retCode = retCode;
     }
 
     public static class ResultBean {
         /**
-         * mobilenumber : 1821778
-         * mobilearea : 上海
-         * mobiletype : 移动182卡
-         * areacode : 021
-         * postcode : 200000
+         * city : 深圳市
+         * cityCode : 0755
+         * mobileNumber : 1308888
+         * operator : 联通130卡
+         * province : 广东
+         * zipCode : 518000
          */
 
-        private String mobilenumber;
-        private String mobilearea;
-        private String mobiletype;
-        private String areacode;
-        private String postcode;
+        private String city;
+        private String cityCode;
+        private String mobileNumber;
+        private String operator;
+        private String province;
+        private String zipCode;
 
-        public String getMobilenumber() {
-            return mobilenumber;
+        public String getCity() {
+            return city;
         }
 
-        public void setMobilenumber(String mobilenumber) {
-            this.mobilenumber = mobilenumber;
+        public void setCity(String city) {
+            this.city = city;
         }
 
-        public String getMobilearea() {
-            return mobilearea;
+        public String getCityCode() {
+            return cityCode;
         }
 
-        public void setMobilearea(String mobilearea) {
-            this.mobilearea = mobilearea;
+        public void setCityCode(String cityCode) {
+            this.cityCode = cityCode;
         }
 
-        public String getMobiletype() {
-            return mobiletype;
+        public String getMobileNumber() {
+            return mobileNumber;
         }
 
-        public void setMobiletype(String mobiletype) {
-            this.mobiletype = mobiletype;
+        public void setMobileNumber(String mobileNumber) {
+            this.mobileNumber = mobileNumber;
         }
 
-        public String getAreacode() {
-            return areacode;
+        public String getOperator() {
+            return operator;
         }
 
-        public void setAreacode(String areacode) {
-            this.areacode = areacode;
+        public void setOperator(String operator) {
+            this.operator = operator;
         }
 
-        public String getPostcode() {
-            return postcode;
+        public String getProvince() {
+            return province;
         }
 
-        public void setPostcode(String postcode) {
-            this.postcode = postcode;
+        public void setProvince(String province) {
+            this.province = province;
+        }
+
+        public String getZipCode() {
+            return zipCode;
+        }
+
+        public void setZipCode(String zipCode) {
+            this.zipCode = zipCode;
         }
     }
 }

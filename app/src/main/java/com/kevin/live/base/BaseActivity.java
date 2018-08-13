@@ -1,9 +1,20 @@
 package com.kevin.live.base;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
+import com.kevin.live.R;
 import com.kevin.live.view.LoadingDialog;
+
+import butterknife.BindView;
+import butterknife.ButterKnife;
 
 
 /**
@@ -22,6 +33,16 @@ public abstract class BaseActivity extends AppBaseActivity {
 //    public String TAG = getClass().getSimpleName();
 
 //    private DayNightHelper mDayNightHelper;
+
+    @BindView(R.id.tv_title)
+    public TextView tvTitle;
+    @BindView(R.id.iv_function)
+    public ImageView ivFunction;
+    @BindView(R.id.tool_bar)
+    public Toolbar toolBar;
+    @BindView(R.id.ll_tool_bar)
+    public LinearLayout llToolbar;
+    public ActionBar actionBar;
     public LoadingDialog mLoadingDialog;
 
     @Override
@@ -29,18 +50,42 @@ public abstract class BaseActivity extends AppBaseActivity {
         super.onCreate(savedInstanceState);
 //        mDayNightHelper = new DayNightHelper(this);
 //        initTheme();
+        setContentView(setLayoutResId());
+        ButterKnife.bind(this);
+        setSupportActionBar(toolBar);
+        actionBar = getSupportActionBar();
+        actionBar.setTitle(null);
+        actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setHomeButtonEnabled(true);
         initView();
         initData();
         initListener();
     }
 
+    public abstract int setLayoutResId();
 
     public abstract void initView();
 
     public abstract void initData();
 
     public abstract void initListener();
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                break;
+            default:
+                break;
+        }
+        return true;
+    }
     //===============Some Methods=================//
+
+    public void startNewActivity(Class<? extends BaseActivity> clazz) {
+        startActivity(new Intent(this, clazz));
+    }
 
     /**
      * init Loading Dialog.
@@ -69,7 +114,6 @@ public abstract class BaseActivity extends AppBaseActivity {
      * 切换日夜间模式后进行刷新界面，写到initView()方法的最后
      */
 //    public abstract void refreshUI();
-
     private void initTheme() {
 //        if (mDayNightHelper.isDay()) {
 //            setTheme(R.style.DayTheme);

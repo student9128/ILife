@@ -41,56 +41,60 @@ import butterknife.ButterKnife;
 
 
 public class MobileLookUpActivity extends BaseActivity implements View.OnClickListener {
-    @BindView(R.id.et_mobile_number)
-    EditText mEtMobileNumber;
 
-    @BindView(R.id.btn_qry)
-    Button mBtnQuery;
-    @BindView(R.id.tv_location)
-    TextView mLocation;
-    @BindView(R.id.tv_type)
-    TextView mMobileNumberType;
+
     @BindView(R.id.tv_title)
-    TextView mTvTitle;
+    TextView tvTitle;
     @BindView(R.id.iv_function)
-    ImageView mIvFunction;
-    @BindView(R.id.tv_clear)
-    ImageView mTvClear;
-    @BindView(R.id.tv_zone_number)
-    TextView mTvZoneNumber;
-    @BindView(R.id.tv_postcode)
-    TextView mTvPostcode;
+    ImageView ivFunction;
     @BindView(R.id.tool_bar)
-    Toolbar mToolBar;
-
+    Toolbar toolBar;
+    @BindView(R.id.et_mobile_number)
+    EditText etMobileNumber;
+    @BindView(R.id.tv_clear)
+    ImageView tvClear;
+    @BindView(R.id.btn_qry)
+    Button btnQry;
+    @BindView(R.id.tv_location)
+    TextView tvLocation;
+    @BindView(R.id.tv_operator)
+    TextView tvOperator;
+    @BindView(R.id.tv_cityCode)
+    TextView tvCityCode;
+    @BindView(R.id.tv_postcode)
+    TextView tvPostcode;
     private RequestQueue mQueue;
 
     @Override
+    public int setLayoutResId() {
+        return R.layout.activity_mobile_look_up;
+    }
+
+    @Override
     public void initView() {
-        setContentView(R.layout.activity_mobile_look_up);
         ButterKnife.bind(this);
-        mToolBar.setTitle("");
-        setSupportActionBar(mToolBar);
+        toolBar.setTitle("");
+        setSupportActionBar(toolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mQueue = Volley.newRequestQueue(this);
     }
 
     @Override
     public void initData() {
-        mTvTitle.setText("手机归属地查询");
+        tvTitle.setText("手机归属地查询");
 
     }
 
     @Override
     public void initListener() {
-        mToolBar.setNavigationOnClickListener(new View.OnClickListener() {
+        toolBar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 finish();
             }
         });
-        mBtnQuery.setOnClickListener(this);
-        mEtMobileNumber.addTextChangedListener(new TextWatcher() {
+        btnQry.setOnClickListener(this);
+        etMobileNumber.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
@@ -99,7 +103,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!TextUtils.isEmpty(s)) {
-                    mTvClear.setVisibility(View.VISIBLE);
+                    tvClear.setVisibility(View.VISIBLE);
                 }
             }
 
@@ -108,7 +112,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
 
             }
         });
-        mTvClear.setOnClickListener(this);
+        tvClear.setOnClickListener(this);
 //        mIvBack.setOnClickListener(this);
 
     }
@@ -117,7 +121,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.btn_qry:
-                String number = mEtMobileNumber.getText().toString().trim();
+                String number = etMobileNumber.getText().toString().trim();
                 if (TextUtils.isEmpty(number)) {
                     showToast("请输入手机号");
                 } else if (number.length() < 7) {
@@ -127,8 +131,8 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
                 }
                 break;
             case R.id.tv_clear:
-                mEtMobileNumber.setText("");
-                mTvClear.setVisibility(View.GONE);
+                etMobileNumber.setText("");
+                tvClear.setVisibility(View.GONE);
                 break;
 
         }
@@ -136,28 +140,36 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
     }
 
     private void doPostQryMolbieNumberLocation() {
-        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.MOBILE_PLACE, new Response.Listener<String>() {
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.MOBILE_NUMBER_LOCATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
                 LogK.i("TAG", response);
-//                Gson gson = new Gson();
-//                MobileNumberLookUpBean mobileNumberLookUpBean = gson.fromJson(response, MobileNumberLookUpBean.class);
                 MobileNumberLookUpBean mobileNumberLookUpBean = JSON.parseObject(response, MobileNumberLookUpBean.class);
-                int errorCode = mobileNumberLookUpBean.getError_code();
-                String reason = mobileNumberLookUpBean.getReason();
-                if (0 == errorCode) {
+                String retCode = mobileNumberLookUpBean.getRetCode();
+                if ("200".equals(retCode)) {
                     MobileNumberLookUpBean.ResultBean result = mobileNumberLookUpBean.getResult();
-                    String mobilearea = result.getMobilearea();
-                    String mobiletype = result.getMobiletype();
-                    String areacode = result.getAreacode();
-                    String postcode = result.getPostcode();
-                    mLocation.setText("归属地:\t" + mobilearea);
-                    mMobileNumberType.setText("手机卡类型：\t" + mobiletype);
-                    mTvZoneNumber.setText("区号：\t" + areacode);
-                    mTvPostcode.setText("邮政编码：\t" + postcode);
-                } else {
-                    showToast("您的手机号不正确，请重新输入");
+                    String city = result.getCity();
+                    String cityCode = result.getCityCode();
+                    String province = result.getProvince();
+                    String operator = result.getOperator();
+                    String zipCode = result.getZipCode();//邮编
+                    if (city.equals(province)) {
+                        tvLocation.setText("归属地：" + province);
+                    } else {
+                    tvLocation.setText("归属地：" + province + city);
+                    }
+                    tvOperator.setText("运营商：" + operator);
+                    tvCityCode.setText("城市编号：" + cityCode);
+                    tvPostcode.setText("邮编：" + zipCode);
+
+
+                } else if ("20101".equals(retCode)) {
+                    showToast("查询不到相关数据");
+
+                } else if ("20102".equals(retCode)) {
+                    showToast("手机号码格式错误");
                 }
+
 
             }
         }, new Response.ErrorListener() {
@@ -170,10 +182,11 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
             protected Map<String, String> getParams() throws AuthFailureError {
                 Map<String, String> map = new HashMap<>();
                 map.put("key", Urls.APP_Key);
-                map.put("mobileNumber", mEtMobileNumber.getText().toString().trim());
+                map.put("phone", etMobileNumber.getText().toString().trim());
                 return map;
             }
         };
+
 
         mQueue.add(stringRequest);
     }

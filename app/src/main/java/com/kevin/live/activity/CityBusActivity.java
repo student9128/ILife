@@ -32,8 +32,12 @@ public class CityBusActivity extends BaseActivity {
     private RequestQueue mQueue;
 
     @Override
+    public int setLayoutResId() {
+        return R.layout.activity_city_bus;
+    }
+
+    @Override
     public void initView() {
-        setContentView(R.layout.activity_city_bus);
         mQueue = Volley.newRequestQueue(this);
     }
 
@@ -48,6 +52,19 @@ public class CityBusActivity extends BaseActivity {
     }
 
     private void doPostQryCityBus() {
+        String url = "https://interface.meiriyiwen.com/article/today?dev=1";
+        StringRequest sr = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                LogK.i("TAG", response);
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                LogK.i("TAG", error.getMessage());
+            }
+        });
+        mQueue.add(sr);
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.CITY_BUS, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -55,17 +72,17 @@ public class CityBusActivity extends BaseActivity {
 //                Gson gson = new Gson();
 //                MobileNumberLookUpBean mobileNumberLookUpBean = gson.fromJson(response, MobileNumberLookUpBean.class);
                 MobileNumberLookUpBean mobileNumberLookUpBean = JSON.parseObject(response, MobileNumberLookUpBean.class);
-                int errorCode = mobileNumberLookUpBean.getError_code();
-                String reason = mobileNumberLookUpBean.getReason();
-                if (0 == errorCode) {
-                    MobileNumberLookUpBean.ResultBean result = mobileNumberLookUpBean.getResult();
-                    String mobilearea = result.getMobilearea();
-                    String mobiletype = result.getMobiletype();
-                    String areacode = result.getAreacode();
-                    String postcode = result.getPostcode();
-                } else {
-                    showToast("您的手机号不正确，请重新输入");
-                }
+//                int errorCode = mobileNumberLookUpBean.getError_code();
+//                String reason = mobileNumberLookUpBean.getReason();
+//                if (0 == errorCode) {
+//                    MobileNumberLookUpBean.ResultBean result = mobileNumberLookUpBean.getResult();
+//                    String mobilearea = result.getMobilearea();
+//                    String mobiletype = result.getMobiletype();
+//                    String areacode = result.getAreacode();
+//                    String postcode = result.getPostcode();
+//                } else {
+//                    showToast("您的手机号不正确，请重新输入");
+//                }
 
             }
         }, new Response.ErrorListener() {

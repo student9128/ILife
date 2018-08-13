@@ -47,7 +47,7 @@ public class VolleyUtils {
 
     }
 
-    private static RequestQueue getInstance(Context context) {
+    public static RequestQueue getInstance(Context context) {
         if (requestQueue == null) {
             synchronized (VolleyUtils.class) {
                 if (requestQueue == null) {
@@ -60,7 +60,7 @@ public class VolleyUtils {
         return requestQueue;
     }
 
-    private static <T> void addRequest(RequestQueue requestQueue,
+    public static <T> void addRequest(RequestQueue requestQueue,
                                        Request<T> request, Object tag) {
         if (tag != null) {
             request.setTag(tag);
@@ -107,11 +107,36 @@ public class VolleyUtils {
         getImageLoader(context).get(url, listener, maxWidth, maxHeight);
 
     }
+    public static void stringRequestByPost(Context context, String url, Object tag, final Map<String, String> params, final HttpResponseListener<String> listener) {
+      StringRequest stringRequest = new StringRequest(Method.POST,url,new Response.Listener<String>(){
+          @Override
+          public void onResponse(String response) {
+              listener.onSuccess(response);
+          }
+      },new Response.ErrorListener(){
+          @Override
+          public void onErrorResponse(VolleyError error) {
+              listener.onFail(error);
+          }
+      }){
+          @Override
+          protected Map<String, String> getParams() throws AuthFailureError {
+              return params == null ? super.getParams() : params;
+          }
+      };
+        addRequest(getInstance(context), stringRequest, tag);
+    }
+    public static <T> void stringRequestByPost(Context context, String url,
+                                               Object tag,Map<String, String> params,Class<T> clazz,
+                                               HttpResponseListener<T> listener){
+        stringRequestByPost(context,url,tag,params,clazz,listener,true,null);
 
-    public static <T> void sendStringRequestByPost(Context context, String url,
-                                                   Object tag, final Map<String, String> params, final Class<T> clazz,
-                                                   final HttpBackListener<T> listener, final boolean isLogin,
-                                                   final String cookieValue) {
+    }
+
+    public static <T> void stringRequestByPost(Context context, String url,
+                                               Object tag, final Map<String, String> params, final Class<T> clazz,
+                                               final HttpResponseListener<T> listener, final boolean isLogin,
+                                               final String cookieValue) {
         StringRequest stringRequest = new StringRequest(Method.POST, url,
                 new Response.Listener<String>() {
 
@@ -126,7 +151,7 @@ public class VolleyUtils {
             public void onErrorResponse(VolleyError volleyError) {
                 if (volleyError != null) {
                     Log.e("VolleyError", volleyError.getMessage());
-                    listener.onFail(volleyError.networkResponse.statusCode);
+                    listener.onFail(volleyError);
                 }
             }
         }) {
@@ -153,7 +178,7 @@ public class VolleyUtils {
 
     public static <T> void sendStringRequestByGet(Context context,
                                                   final String url, Object tag, final Map<String, String> params,
-                                                  final Class<T> clazz, final HttpBackListener<T> listener,
+                                                  final Class<T> clazz, final HttpResponseListener<T> listener,
                                                   final boolean isLogin, final String cookieValue) {
         StringRequest stringRequest = new StringRequest(Method.GET, url,
                 new Response.Listener<String>() {
@@ -169,7 +194,7 @@ public class VolleyUtils {
             public void onErrorResponse(VolleyError volleyError) {
                 if (volleyError != null) {
                     Log.e("VolleyError", volleyError.getMessage());
-                    listener.onFail(volleyError.networkResponse.statusCode);
+                    listener.onFail(volleyError);
                 }
             }
         }) {
@@ -201,7 +226,7 @@ public class VolleyUtils {
 
     public static <T> void sendJsonObject(Context context, int method,
                                           String url, JSONObject jsonRequest, Object tag,
-                                          final Class<T> clazz, final HttpBackListener<T> listener,
+                                          final Class<T> clazz, final HttpResponseListener<T> listener,
                                           final boolean isLogin, final String cookieValue) {
         JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(method,
                 url, jsonRequest, new Response.Listener<JSONObject>() {
@@ -217,7 +242,7 @@ public class VolleyUtils {
             public void onErrorResponse(VolleyError volleyError) {
                 if (volleyError != null) {
                     Log.e("VolleyError", volleyError.getMessage());
-                    listener.onFail(volleyError.networkResponse.statusCode);
+                    listener.onFail(volleyError);
                 }
             }
         }) {
@@ -238,7 +263,7 @@ public class VolleyUtils {
 
     public static <T> void sendJsonRequest(Context context, int method,
                                            String url, String jsonStr, Object tag, Class<T> clazz,
-                                           final HttpBackListener<T> listener, final boolean isLogin,
+                                           final HttpResponseListener<T> listener, final boolean isLogin,
                                            final String cookieValue) {
         JsonRequest<T> jsonRequest = new JsonRequest<T>(method, url, jsonStr,
                 clazz, isLogin, cookieValue, new Listener<T>() {
@@ -253,7 +278,7 @@ public class VolleyUtils {
             public void onErrorResponse(VolleyError volleyError) {
                 if (volleyError != null) {
                     Log.e("VolleyError", volleyError.getMessage());
-                    listener.onFail(volleyError.networkResponse.statusCode);
+                    listener.onFail(volleyError);
                 }
             }
         });

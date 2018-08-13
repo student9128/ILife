@@ -3,31 +3,36 @@
     <color name="colorPrimary">#27AE60</color>
     <color name="colorPrimaryDark">#27AE60</color>
     <color name="colorAccent">#FF4081</color>
+    <color name="backgroundColor">#F2F6F7</color>
     <color name="white">#ffffff</color>
     <color name="white_1">#F2F5F7</color>
     <color name="black">#000000</color>
+
     <color name="gray">#707070</color>
     <color name="gray_1">#EEEEEE</color>
     <color name="gray_2">#E0E0E0</color>
     <color name="gray_3">#F5F5F5</color>
+    <color name="gray_4">#212121</color>
+    <color name="gray_5">#303030</color>
+    <color name="gray_6">#424242</color>
+    <color name="gray_7">#BDBDBD</color>
+    <color name="gray_8">#36707070</color>
+    <color name="gray_9">#5F7F7F7F</color>
+    <color name="gray_10">#bbbbbb</color>
+    <color name="light_gray">#f0f0f0</color>
+    <color name="light_white">#f5f5f5</color>
+
     <color name="transparent">#00000000</color>
+
     <color name="bg">#3f3F51B5</color>
     <color name="teal">#009688</color>
     <color name="amber">#FFE57F</color>
     <color name="red">#F44336</color>
     <color name="amber_1">#FFEDB2</color>
-    <color name="gray_8">#36707070</color>
-    <color name="gray_9">#5F7F7F7F</color>
 
     <color name="black_1">#88000000</color>
-    <color name="gray_4">#212121</color>
-    <color name="gray_5">#303030</color>
-    <color name="gray_6">#424242</color>
-    <color name="gray_7">#BDBDBD</color>
     <color name="gray_27">#ECECEC</color>
     <color name="orange_1">#FFCD8E</color>
     <color name="blue_1">#48BAF5</color>
 
-    <color name="light_gray">#f0f0f0</color>
-    <color name="light_white">#f5f5f5</color>
 </resources>
