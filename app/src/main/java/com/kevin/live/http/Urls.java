@@ -33,4 +33,13 @@ public class Urls {
      * 彩票列表
      */
     public static final String LOTTERY_LIST = BASE_URL + "lottery/list";
+
+    /**
+     * 实时票房
+     */
+    public static final String CURRENT_BOX_OFFICE = BASE_URL+"boxoffice/day/query";
+
+    public static final String COOK_BOOK = BASE_URL+"v1/cook/category/query";
+
+    public static final String COOK_MENU = BASE_URL+"v1/cook/menu/search";
 }

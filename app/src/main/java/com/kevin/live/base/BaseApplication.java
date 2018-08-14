@@ -34,13 +34,13 @@ public class BaseApplication extends Application {
         super.onCreate();
         CrashReport.initCrashReport(getApplicationContext(), "b1ebc71639", true);
         mContext = getApplicationContext();
-        volleyQueue = Volley.newRequestQueue(getApplicationContext());
+//        volleyQueue = Volley.newRequestQueue(getApplicationContext());
         VolleyUtils.getInstance(this);
     }
 
     // 开放Volley的HTTP请求队列接口
-    public static RequestQueue getRequestQueue() {
-        return volleyQueue;
-    }
+//    public static RequestQueue getRequestQueue() {
+//        return volleyQueue;
+//    }
 
 }

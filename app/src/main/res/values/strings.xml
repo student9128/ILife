@@ -28,4 +28,7 @@
     <string name="tab_study_react_native">React Native</string>
 
     <string name="exit_app_tip">再点一次退出Life</string>
+
+    <string name="angle_right">&#xf105;</string>
+    <string name="angle_down">&#xf107;</string>
 </resources>

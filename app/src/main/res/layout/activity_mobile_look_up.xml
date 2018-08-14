@@ -68,7 +68,7 @@
         android:id="@+id/btn_qry"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin_10"
+        android:layout_marginBottom="@dimen/margin_20"
         android:layout_marginLeft="@dimen/uniform_margin"
         android:layout_marginRight="@dimen/uniform_margin"
         android:layout_marginTop="@dimen/uniform_margin"
@@ -78,20 +78,6 @@
         android:textSize="18sp" />
 
 
-    <TextView
-        android:id="@+id/tv_location"
-        style="@style/MobileNumberInfoStyle" />
-
-    <TextView
-        android:id="@+id/tv_operator"
-        style="@style/MobileNumberInfoStyle" />
-    <TextView
-        android:id="@+id/tv_cityCode"
-        style="@style/MobileNumberInfoStyle" />
-
-
-    <TextView
-        android:id="@+id/tv_postcode"
-        style="@style/MobileNumberInfoStyle" />
+ <include layout="@layout/activity_mobile_look_up_result"/>
 
 </LinearLayout>

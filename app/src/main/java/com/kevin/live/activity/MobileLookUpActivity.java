@@ -8,6 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.alibaba.fastjson.JSON;
@@ -63,6 +64,8 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
     TextView tvCityCode;
     @BindView(R.id.tv_postcode)
     TextView tvPostcode;
+    @BindView(R.id.ll_container_result)
+    LinearLayout llResult;
     private RequestQueue mQueue;
 
     @Override
@@ -82,6 +85,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
     @Override
     public void initData() {
         tvTitle.setText("手机归属地查询");
+        llResult.setVisibility(View.INVISIBLE);
 
     }
 
@@ -127,7 +131,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
                 } else if (number.length() < 7) {
                     showToast("你的手机号不正确");
                 } else {
-                    doPostQryMolbieNumberLocation();
+                    doPostQryMobileNumberLocation();
                 }
                 break;
             case R.id.tv_clear:
@@ -139,7 +143,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
 
     }
 
-    private void doPostQryMolbieNumberLocation() {
+    private void doPostQryMobileNumberLocation() {
         StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.MOBILE_NUMBER_LOCATION, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -153,14 +157,15 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
                     String province = result.getProvince();
                     String operator = result.getOperator();
                     String zipCode = result.getZipCode();//邮编
+                    llResult.setVisibility(View.VISIBLE);
                     if (city.equals(province)) {
-                        tvLocation.setText("归属地：" + province);
+                        tvLocation.setText(province);
                     } else {
-                    tvLocation.setText("归属地：" + province + city);
+                    tvLocation.setText(province + city);
                     }
-                    tvOperator.setText("运营商：" + operator);
-                    tvCityCode.setText("城市编号：" + cityCode);
-                    tvPostcode.setText("邮编：" + zipCode);
+                    tvOperator.setText(operator);
+                    tvCityCode.setText(cityCode);
+                    tvPostcode.setText(zipCode);
 
 
                 } else if ("20101".equals(retCode)) {
@@ -176,6 +181,7 @@ public class MobileLookUpActivity extends BaseActivity implements View.OnClickLi
             @Override
             public void onErrorResponse(VolleyError error) {
                 showToast("请求失败");
+                llResult.setVisibility(View.INVISIBLE);
             }
         }) {
             @Override

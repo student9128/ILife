@@ -83,7 +83,7 @@ public class LotteryListActivity extends BaseActivity implements OnRecyclerItemC
 
             @Override
             public void onFail(VolleyError volleyError) {
-
+                printLogd(volleyError.getMessage());
             }
         });
     }

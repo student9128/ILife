@@ -7,6 +7,8 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -17,19 +19,38 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.alibaba.fastjson.JSON;
+import com.android.volley.AuthFailureError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 import com.kevin.live.R;
-import com.kevin.live.activity.CityBusActivity;
+import com.kevin.live.activity.CookBookActivity;
+import com.kevin.live.activity.TrainInfoActivity;
 import com.kevin.live.activity.JokeActivity;
 import com.kevin.live.activity.LotteryListActivity;
 import com.kevin.live.activity.MobileLookUpActivity;
 import com.kevin.live.activity.TestActivity;
+import com.kevin.live.adapter.CurrentBoxOfficeAdapter;
 import com.kevin.live.adapter.HomeGridViewAdapter;
 import com.kevin.live.adapter.MyViewPagerAdapter;
 import com.kevin.live.base.BaseFragment;
+import com.kevin.live.bean.CurrentBoxOfficeBean;
 import com.kevin.live.constant.Constant;
+import com.kevin.live.http.Urls;
+import com.kevin.live.http.util.HttpResponseListener;
+import com.kevin.live.http.util.VolleyUtils;
 import com.kevin.live.util.LogK;
 import com.kevin.live.view.MyGridView;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -54,6 +75,8 @@ public class HomeFragment extends BaseFragment {
     ViewPager mViewPager;
     @BindView(R.id.indicator)
     LinearLayout mIndicator;
+    @BindView(R.id.rl_recycler_view)
+    RecyclerView mRecyclerView;
 
     private int[] mGridViewIcon;
     private String[] mGridViewTitle;
@@ -64,6 +87,8 @@ public class HomeFragment extends BaseFragment {
     private Timer mTimer;
     private static final int UPDATE_VIEWPAGER = 100;
     private boolean isLoop = true;
+    private CurrentBoxOfficeAdapter currentBoxOfficeAdapter;
+    private List<CurrentBoxOfficeBean.ResultBean> boxOfficeData = new ArrayList<>();
 
     public static HomeFragment newInstance(String s) {
         HomeFragment homeFragment = new HomeFragment();
@@ -81,7 +106,6 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void initView() {
-
         AppCompatActivity activity = (AppCompatActivity) this.mActivity;
         activity.setSupportActionBar(mToolbar);
         activity.getSupportActionBar().setTitle(null);
@@ -90,6 +114,7 @@ public class HomeFragment extends BaseFragment {
         mAdapter = new MyViewPagerAdapter(mActivity, mImageArr);
         mViewPager.setAdapter(mAdapter);
         mViewPager.setCurrentItem(5000 * (mImageArr.length));
+
 
     }
 
@@ -144,7 +169,6 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onPageSelected(int position) {
                 setIndicator(position);
-                LogK.i("kevin", position + "");
             }
 
             @Override
@@ -157,11 +181,23 @@ public class HomeFragment extends BaseFragment {
     @Override
     public void initData() {
         tvTitle.setText(getString(R.string.title_home));
-        mGridViewIcon = new int[]{R.drawable.ic_bus, R.drawable.ic_dictionary, R.drawable.ic_food, R.drawable.ic_joker,
-                R.drawable.ic_location, R.drawable.ic_lottery, R.drawable.ic_nba, R.drawable.ic_tv};
-        mGridViewTitle = new String[]{"公交", "字典&翻译", "食谱", "笑话大全", "号码归属", "彩票", "NBA", "电视节目"};
+        mGridViewIcon = new int[]{R.drawable.ic_bus, R.drawable.ic_post_code, R.drawable.ic_food, R.drawable.ic_flight,
+                R.drawable.ic_location, R.drawable.ic_lottery_1, R.drawable.ic_oil, R.drawable.ic_air};
+        mGridViewTitle = new String[]{"火车票", "邮编", "菜谱", "航班", "号码归属", "彩票", "油价", "空气"};
         HomeGridViewAdapter homeGridViewAdapter = new HomeGridViewAdapter(mActivity, mGridViewIcon, mGridViewTitle);
         mMyGridView.setAdapter(homeGridViewAdapter);
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity){
+            @Override
+            public boolean canScrollVertically() {
+                return false;
+            }
+        });
+        mRecyclerView.setNestedScrollingEnabled(false);
+//        mRecyclerView.setHasFixedSize(true);
+//        mRecyclerView.setFocusable(false);
+        currentBoxOfficeAdapter = new CurrentBoxOfficeAdapter(boxOfficeData);
+        mRecyclerView.setAdapter(currentBoxOfficeAdapter);
+        doPostBoxOffice();
     }
 
     @Override
@@ -171,14 +207,13 @@ public class HomeFragment extends BaseFragment {
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
                     case 0:
-                        startActivity(new Intent(mActivity, CityBusActivity.class));
+                        startActivity(new Intent(mActivity, TrainInfoActivity.class));
                         break;
                     case 1:
-                    case 2:
-                        startActivity(new Intent(mActivity, TestActivity.class));
-                        showToast("正在开发中...");
+                    case 2://菜谱
+                        startActivity(new Intent(mActivity, CookBookActivity.class));
                         break;
-                    case 3://笑话大全
+                    case 3://航班
                         showToast("正在开发中...");
                         startActivity(new Intent(mActivity, JokeActivity.class));
                         break;
@@ -240,4 +275,26 @@ public class HomeFragment extends BaseFragment {
             }
         }
     };
+
+
+    private void doPostBoxOffice() {
+        Map<String, String> map = new HashMap<>();
+        map.put("key", Urls.APP_Key);
+        map.put("area", "CN");
+        VolleyUtils.stringRequestByPost(mActivity, Urls.CURRENT_BOX_OFFICE, TAG, map, new HttpResponseListener<String>() {
+            @Override
+            public void onSuccess(String s) {
+                printLogd(s);
+                CurrentBoxOfficeBean currentBoxOfficeBean = JSON.parseObject(s, CurrentBoxOfficeBean.class);
+                List<CurrentBoxOfficeBean.ResultBean> result = currentBoxOfficeBean.getResult();
+                currentBoxOfficeAdapter.updateData(result);
+            }
+
+            @Override
+            public void onFail(VolleyError volleyError) {
+                printLogd(volleyError.getMessage());
+            }
+        });
+
+    }
 }

@@ -20,7 +20,7 @@ public class SPUtil {
     public static Boolean getBooleanSP(String key, Context context) {
         mSP = context.getSharedPreferences(key, Context.MODE_PRIVATE);
         boolean value = mSP.getBoolean(key, false);
-        LogK.d("Kevin", value + "");
+//        LogK.d("Kevin", value + "");
         return value;
 
     }

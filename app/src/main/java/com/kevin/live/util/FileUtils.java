@@ -28,7 +28,7 @@ public class FileUtils {
      * directory
      */
     public static String directory = Environment.getExternalStorageDirectory() +
-            File.separator + "1AMobileChart" + File.separator;
+            File.separator + "Life" + File.separator;
 
     /**
      * get info about whether sd is mounted.

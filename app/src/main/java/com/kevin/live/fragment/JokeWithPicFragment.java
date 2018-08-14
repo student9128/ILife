@@ -82,33 +82,33 @@ public class JokeWithPicFragment extends BaseFragment {
         map.put("key", "0933128229dd416daf447c564d65eb92");
         map.put("dtype", "JSON");
 
-        VolleyUtil.stringRequestByPost(mActivity, Urls.JOKE_NEWS_IMG, null, map, new HttpResponseListener() {
-            @Override
-            public void onSuccess(String response) {
-                LogK.i("TAG", response);
-                JokeWithPicBean jokeWithPicBean = JSON.parseObject(response, JokeWithPicBean.class);
-                int errorCode = jokeWithPicBean.getError_code();
-                String reason = jokeWithPicBean.getReason();
-
-                if (0 == errorCode) {
-                    mSwipeRefresh.setRefreshing(false);
-                    List<JokeWithPicBean.ResultBean> result = jokeWithPicBean.getResult();
-                    mData.clear();
-                    mData.addAll(result);
-                    JokeWithPicAdapter jokeAdapter = new JokeWithPicAdapter(mActivity, mData);
-                    mRecyclerView.setAdapter(jokeAdapter);
-
-                } else {
-                    showToast(errorCode+"=="+reason);
-                }
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                mSwipeRefresh.setRefreshing(false);
-                showToast("请求失败");
-            }
-        });
+//        VolleyUtil.stringRequestByPost(mActivity, Urls.JOKE_NEWS_IMG, null, map, new HttpResponseListener() {
+//            @Override
+//            public void onSuccess(String response) {
+//                LogK.i("TAG", response);
+//                JokeWithPicBean jokeWithPicBean = JSON.parseObject(response, JokeWithPicBean.class);
+//                int errorCode = jokeWithPicBean.getError_code();
+//                String reason = jokeWithPicBean.getReason();
+//
+//                if (0 == errorCode) {
+//                    mSwipeRefresh.setRefreshing(false);
+//                    List<JokeWithPicBean.ResultBean> result = jokeWithPicBean.getResult();
+//                    mData.clear();
+//                    mData.addAll(result);
+//                    JokeWithPicAdapter jokeAdapter = new JokeWithPicAdapter(mActivity, mData);
+//                    mRecyclerView.setAdapter(jokeAdapter);
+//
+//                } else {
+//                    showToast(errorCode+"=="+reason);
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Exception e) {
+//                mSwipeRefresh.setRefreshing(false);
+//                showToast("请求失败");
+//            }
+//        });
 //        StringRequest stringRequest = new StringRequest(Request.Method.POST, Urls.JOKE_NEWS_IMG, new Response.Listener<String>() {
 //            @Override
 //            public void onResponse(String response) {

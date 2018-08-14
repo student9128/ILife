@@ -27,7 +27,7 @@ import java.util.Map;
  */
 
 
-public class CityBusActivity extends BaseActivity {
+public class TrainInfoActivity extends BaseActivity {
 
     private RequestQueue mQueue;
 

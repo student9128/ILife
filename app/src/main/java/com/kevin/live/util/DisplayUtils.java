@@ -7,6 +7,7 @@ package com.kevin.live.util;
  */
 
 import android.content.Context;
+import android.util.TypedValue;
 
 public class DisplayUtils {
 
@@ -56,6 +57,10 @@ public class DisplayUtils {
     public static int sp2px(Context context, float spValue) {
         final float fontScale = context.getResources().getDisplayMetrics().scaledDensity;
         return (int) (spValue * fontScale + 0.5f);
+    }
+
+    public static int dp2px(Context context,float dpValue) {
+        return (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dpValue, context.getResources().getDisplayMetrics());
     }
 
 }

@@ -8,8 +8,8 @@
 
     <ImageView
         android:id="@+id/iv_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_gravity="center"
         tools:src="@drawable/ic_bus" />
 
@@ -19,5 +19,6 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="@dimen/margin_5"
+        android:textColor="@color/black"
         tools:text="公交" />
 </LinearLayout>

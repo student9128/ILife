@@ -24,15 +24,15 @@ public class VolleyRequestUtil {
     * */
     public static void RequestGet(Context context, String url, String tag, VolleyListenerInterface volleyListenerInterface) {
         // 清除请求队列中的tag标记请求
-        BaseApplication.getRequestQueue().cancelAll(tag);
+//        BaseApplication.getRequestQueue().cancelAll(tag);
         // 创建当前的请求，获取字符串内容
         stringRequest = new StringRequest(Request.Method.GET, url, volleyListenerInterface.responseListener(), volleyListenerInterface.errorListener());
         // 为当前请求添加标记
         stringRequest.setTag(tag);
         // 将当前请求添加到请求队列中
-        BaseApplication.getRequestQueue().add(stringRequest);
+//        BaseApplication.getRequestQueue().add(stringRequest);
         // 重启当前请求队列
-        BaseApplication.getRequestQueue().start();
+//        BaseApplication.getRequestQueue().start();
     }
 
     /*
@@ -46,7 +46,7 @@ public class VolleyRequestUtil {
     * */
     public static void RequestPost(Context context, String url, String tag, final Map<String, String> params, VolleyListenerInterface volleyListenerInterface) {
         // 清除请求队列中的tag标记请求
-        BaseApplication.getRequestQueue().cancelAll(tag);
+//        BaseApplication.getRequestQueue().cancelAll(tag);
         // 创建当前的POST请求，并将请求内容写入Map中
         stringRequest = new StringRequest(Request.Method.POST, url, volleyListenerInterface.responseListener(), volleyListenerInterface.errorListener()) {
             @Override
@@ -57,8 +57,8 @@ public class VolleyRequestUtil {
         // 为当前请求添加标记
         stringRequest.setTag(tag);
         // 将当前请求添加到请求队列中
-        BaseApplication.getRequestQueue().add(stringRequest);
+//        BaseApplication.getRequestQueue().add(stringRequest);
         // 重启当前请求队列
-        BaseApplication.getRequestQueue().start();
+//        BaseApplication.getRequestQueue().start();
     }
 }

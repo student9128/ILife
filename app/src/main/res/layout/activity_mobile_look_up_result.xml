@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ll_container_result"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="@dimen/uniform_margin"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <TextView
+        android:background="@drawable/bg_mobile_look_up_result"
+        android:gravity="center"
+        android:paddingVertical="@dimen/padding_10"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="查询结果"
+        android:textSize="@dimen/textSize16"
+        android:textColor="@color/white" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/uniform_padding"
+        android:paddingVertical="@dimen/padding_10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="归属地"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_location"
+            style="@style/MobileNumberInfoStyle"
+            tools:text="位置" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/uniform_padding"
+        android:paddingVertical="@dimen/padding_10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="运营商"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_operator"
+            style="@style/MobileNumberInfoStyle" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/uniform_padding"
+        android:paddingVertical="@dimen/padding_10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="城市编号"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_cityCode"
+            style="@style/MobileNumberInfoStyle" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/gray_1" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingLeft="@dimen/uniform_padding"
+        android:paddingVertical="@dimen/padding_10">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="邮编"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/tv_postcode"
+            style="@style/MobileNumberInfoStyle" />
+    </LinearLayout>
+</LinearLayout>

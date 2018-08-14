@@ -4,23 +4,55 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     android:orientation="vertical">
 
     <include layout="@layout/tool_bar" />
 
-    <include layout="@layout/layout_view_pager" />
-
-    <com.kevin.live.view.MyGridView
-        android:id="@+id/mgv_my_grid_view"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/uniform_margin"
-        android:horizontalSpacing="-5dp"
-        android:listSelector="@color/transparent"
-        android:numColumns="4"
-        android:scrollbars="none"
-        android:stretchMode="columnWidth"
-        android:verticalSpacing="15dp"></com.kevin.live.view.MyGridView>
+        android:layout_height="match_parent"
+        android:descendantFocusability="blocksDescendants">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <include layout="@layout/layout_view_pager" />
+
+            <com.kevin.live.view.MyGridView
+                android:id="@+id/mgv_my_grid_view"
+                android:background="@color/white"
+                android:paddingVertical="@dimen/uniform_padding"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/uniform_margin"
+                android:horizontalSpacing="-5dp"
+                android:listSelector="@color/transparent"
+                android:numColumns="4"
+                android:scrollbars="none"
+                android:stretchMode="columnWidth"
+                android:verticalSpacing="15dp"></com.kevin.live.view.MyGridView>
+
+            <TextView
+                android:id="@+id/tv_current_box_office"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="实时票房"
+                android:textColor="@color/black"
+                android:paddingHorizontal="@dimen/uniform_padding"
+                android:paddingVertical="@dimen/padding_10"
+                android:textSize="@dimen/textSize18" />
+
+            <include layout="@layout/header_item_current_box_office"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rl_recycler_view"
+                android:background="@color/white"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                ></android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+    </android.support.v4.widget.NestedScrollView>
 
 </LinearLayout>

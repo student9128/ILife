@@ -32,13 +32,16 @@
             android:theme="@style/SubTheme" />
         <activity android:name="com.kevin.live.activity.SearchActivity" />
         <activity android:name=".activity.MobileLookUpActivity" />
-        <activity android:name=".activity.CityBusActivity" />
+        <activity android:name=".activity.TrainInfoActivity" />
         <activity android:name=".activity.JokeActivity" />
         <activity
             android:name=".activity.TestActivity"
             android:theme="@style/BaseTheme1" />
         <activity android:name=".activity.LotteryListActivity"/>
         <activity android:name=".activity.LotteryDetailActivity"/>
+        <activity android:name=".activity.CookBookActivity"/>
+        <activity android:name=".activity.CookBookDetailActivity"/>
+        <activity android:name=".activity.CookBookMenuActivity"/>
     </application>
 
 </manifest>
