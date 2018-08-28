@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
 import com.kevin.live.R;
 import com.kevin.live.adapter.TabLayoutNewsFragmentAdapter;
 import com.kevin.live.base.BaseFragment;
@@ -20,10 +21,15 @@ import com.kevin.live.fragment.news.HotNewsFragment;
 import com.kevin.live.fragment.news.SocietyNewsFragment;
 import com.kevin.live.fragment.news.TechNewsFragment;
 import com.kevin.live.fragment.news.WorldNewsFragment;
+import com.kevin.live.http.Urls;
+import com.kevin.live.http.util.HttpResponseListener;
+import com.kevin.live.http.util.VolleyUtils;
 import com.kevin.live.view.NoSmoothViewPager;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 
@@ -127,6 +133,7 @@ public class NewsFragment extends BaseFragment implements TabLayout.OnTabSelecte
     public void initData() {
 //        mTvTitle.setText(getString(R.string.title_news));
         initColor();
+        doPostCategory();
     }
 
     @Override
@@ -190,6 +197,23 @@ public class NewsFragment extends BaseFragment implements TabLayout.OnTabSelecte
     @Override
     public void onPageScrollStateChanged(int state) {
 
+    }
+
+
+    private void doPostCategory() {
+        Map<String, String> map = new HashMap<>();
+        map.put("key", Urls.APP_Key);
+        VolleyUtils.stringRequestByPost(mActivity, Urls.WX_ARTICLE, TAG, map, new HttpResponseListener<String>() {
+            @Override
+            public void onSuccess(String s) {
+                printLogd(s);
+            }
+
+            @Override
+            public void onFail(VolleyError volleyError) {
+
+            }
+        });
     }
 
     private void initColor() {

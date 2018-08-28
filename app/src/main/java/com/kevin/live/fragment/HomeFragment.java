@@ -28,7 +28,10 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.kevin.live.R;
+import com.kevin.live.activity.AirInfoActivity;
 import com.kevin.live.activity.CookBookActivity;
+import com.kevin.live.activity.FlightInfoActivity;
+import com.kevin.live.activity.PostcodeActivity;
 import com.kevin.live.activity.TrainInfoActivity;
 import com.kevin.live.activity.JokeActivity;
 import com.kevin.live.activity.LotteryListActivity;
@@ -186,7 +189,7 @@ public class HomeFragment extends BaseFragment {
         mGridViewTitle = new String[]{"火车票", "邮编", "菜谱", "航班", "号码归属", "彩票", "油价", "空气"};
         HomeGridViewAdapter homeGridViewAdapter = new HomeGridViewAdapter(mActivity, mGridViewIcon, mGridViewTitle);
         mMyGridView.setAdapter(homeGridViewAdapter);
-        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity){
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(mActivity) {
             @Override
             public boolean canScrollVertically() {
                 return false;
@@ -206,27 +209,31 @@ public class HomeFragment extends BaseFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 switch (position) {
-                    case 0:
+                    case 0://火车票
                         startActivity(new Intent(mActivity, TrainInfoActivity.class));
                         break;
-                    case 1:
+                    case 1://邮编
+                        startActivity(new Intent(mActivity, PostcodeActivity.class));
+                        break;
                     case 2://菜谱
                         startActivity(new Intent(mActivity, CookBookActivity.class));
                         break;
                     case 3://航班
-                        showToast("正在开发中...");
-                        startActivity(new Intent(mActivity, JokeActivity.class));
+                        startNewActivity(FlightInfoActivity.class);
                         break;
-                    case 4:
+                    case 4://号码归属地
                         startActivity(new Intent(mActivity, MobileLookUpActivity.class));
                         break;
-                    case 5:
+                    case 5://彩票
 //                        showToast("正在开发中...");
                         startNewActivity(LotteryListActivity.class);
                         break;
-                    case 6:
+                    case 6://油价
                         break;
-                    case 7:
+                    case 7://空气
+                        startNewActivity(AirInfoActivity.class);
+                        break;
+                    default:
                         break;
 
                 }

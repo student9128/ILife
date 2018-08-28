@@ -23,6 +23,8 @@
     <!-- padding value -->
     <dimen name="padding_10">10dp</dimen>
     <dimen name="padding_5">5dp</dimen>
+    <dimen name="padding_25">25dp</dimen>
+    <dimen name="padding_30">30dp</dimen>
     <dimen name="padding_50">50dp</dimen>
 
     <!--text size-->

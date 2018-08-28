@@ -42,6 +42,10 @@
         <activity android:name=".activity.CookBookActivity"/>
         <activity android:name=".activity.CookBookDetailActivity"/>
         <activity android:name=".activity.CookBookMenuActivity"/>
+        <activity android:name=".activity.PostcodeActivity"/>
+        <activity android:name=".activity.FlightInfoActivity"/>
+        <activity android:name=".activity.OilInfoActivity"/>
+        <activity android:name=".activity.AirInfoActivity"/>
     </application>
 
 </manifest>

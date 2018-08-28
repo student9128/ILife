@@ -42,4 +42,16 @@ public class Urls {
     public static final String COOK_BOOK = BASE_URL+"v1/cook/category/query";
 
     public static final String COOK_MENU = BASE_URL+"v1/cook/menu/search";
+
+    /**
+     * 微信精选
+     */
+    public static final String WX_ARTICLE = BASE_URL + "wx/article/category/query";
+
+    /**
+     * 邮编城市列表
+     */
+    public static final String POSTCODE_CITY = BASE_URL + "v1/postcode/pcd";
+
+    public static final String POSTCODE_RESULT = BASE_URL + "v1/postcode/search";
 }

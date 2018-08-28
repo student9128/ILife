@@ -39,6 +39,7 @@ public class CookBookMenuActivity extends BaseActivity {
     TextView tvSummary;
     private List<CookBookMethodBean.MethodBean> data = new ArrayList<>();
     private CookBookMethodAdapter cookBookMethodAdapter;
+
     @Override
     public int setLayoutResId() {
         return R.layout.activity_cook_book_menu;
@@ -81,7 +82,7 @@ public class CookBookMenuActivity extends BaseActivity {
             data.clear();
             data.addAll(cookMethod);
             cookBookMethodAdapter = new CookBookMethodAdapter(this, data);
-            rlRecyclerView.setLayoutManager(new LinearLayoutManager(this){
+            rlRecyclerView.setLayoutManager(new LinearLayoutManager(this) {
                 @Override
                 public boolean canScrollVertically() {
                     return false;
