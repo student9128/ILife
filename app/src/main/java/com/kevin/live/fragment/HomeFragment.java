@@ -31,6 +31,7 @@ import com.kevin.live.R;
 import com.kevin.live.activity.AirInfoActivity;
 import com.kevin.live.activity.CookBookActivity;
 import com.kevin.live.activity.FlightInfoActivity;
+import com.kevin.live.activity.OilInfoActivity;
 import com.kevin.live.activity.PostcodeActivity;
 import com.kevin.live.activity.TrainInfoActivity;
 import com.kevin.live.activity.JokeActivity;
@@ -229,6 +230,7 @@ public class HomeFragment extends BaseFragment {
                         startNewActivity(LotteryListActivity.class);
                         break;
                     case 6://油价
+                        startNewActivity(OilInfoActivity.class);
                         break;
                     case 7://空气
                         startNewActivity(AirInfoActivity.class);

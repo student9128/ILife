@@ -67,6 +67,24 @@ public abstract class BaseFragment extends AppBaseFragment {
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        printLogi("onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        printLogi("onPause");
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        printLogi("onStop");
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();

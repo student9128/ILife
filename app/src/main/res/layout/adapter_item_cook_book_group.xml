@@ -10,7 +10,7 @@
         android:id="@+id/tv_indicator"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:text="@string/angle_right"
+        android:text="@string/icon_angle_right"
         android:textSize="@dimen/textSize20" />
 
     <TextView

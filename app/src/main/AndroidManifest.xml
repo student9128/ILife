@@ -8,6 +8,8 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".base.BaseApplication"
@@ -46,6 +48,8 @@
         <activity android:name=".activity.FlightInfoActivity"/>
         <activity android:name=".activity.OilInfoActivity"/>
         <activity android:name=".activity.AirInfoActivity"/>
+        <activity android:name=".activity.TrainInfoByStationActivity"/>
+        <activity android:name=".activity.TrainInfoByNumberActivity"/>
     </application>
 
 </manifest>

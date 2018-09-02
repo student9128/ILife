@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:paddingVertical="@dimen/padding_10"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_station_number"
+        style="@style/TrainInfoByNoContentStyle"
+         />
+
+    <TextView
+        android:id="@+id/tv_station_name"
+        style="@style/TrainInfoByNoContentStyle"
+         />
+
+    <TextView
+        android:id="@+id/tv_arrive_time"
+        style="@style/TrainInfoByNoContentStyle"
+         />
+
+    <TextView
+        android:id="@+id/tv_start_time"
+        style="@style/TrainInfoByNoContentStyle"
+         />
+
+    <TextView
+        android:id="@+id/tv_remain_time"
+        style="@style/TrainInfoByNoContentStyle"
+         />
+
+</LinearLayout>

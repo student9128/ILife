@@ -65,5 +65,11 @@ public class DateUtils {
         }
         return isBigger;
     }
+
+    public static String getCurrentTime() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        String format = sdf.format(new Date());
+        return format;
+    }
 }
 

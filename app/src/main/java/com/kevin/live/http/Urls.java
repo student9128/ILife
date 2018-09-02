@@ -53,5 +53,17 @@ public class Urls {
      */
     public static final String POSTCODE_CITY = BASE_URL + "v1/postcode/pcd";
 
+    /**
+     * 邮政编码结果查询
+     */
     public static final String POSTCODE_RESULT = BASE_URL + "v1/postcode/search";
+
+    /**
+     * 站站查询火车票信息
+     */
+    public static final String QUERY_TRAIN_INFO_BY_STATION = BASE_URL + "train/tickets/queryByStationToStation";
+    /**
+     * 根据车次查询火车票信息
+     */
+    public static final String QUERY_TRAIN_INFO_BY_TRAIN_NO = BASE_URL + "train/tickets/queryByTrainNo";
 }

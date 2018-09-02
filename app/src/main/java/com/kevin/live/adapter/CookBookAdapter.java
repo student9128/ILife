@@ -84,9 +84,9 @@ public class CookBookAdapter extends BaseExpandableListAdapter {
         }
         groupViewHolder.mGroupText.setText(data.get(groupPosition).getCategoryInfo().getName());
         if (isExpanded) {
-            groupViewHolder.mGroupIndicator.setText(R.string.angle_down);
+            groupViewHolder.mGroupIndicator.setText(R.string.icon_angle_down);
         } else {
-            groupViewHolder.mGroupIndicator.setText(R.string.angle_right);
+            groupViewHolder.mGroupIndicator.setText(R.string.icon_angle_right);
         }
         return convertView;
     }
