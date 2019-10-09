@@ -1,5 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'bugly'
+//apply plugin: 'bugly'
 apply plugin: 'org.greenrobot.greendao'
 
 def getProps(String key){
@@ -16,11 +16,11 @@ def getLocalValue(String key,boolean quote) {
     return value
 }
 
-bugly {
-    appId = getProps("BUGLY_APP_ID") // 注册时分配的App ID
-    appKey = getProps("BUGLY_APP_KEY") // 注册时分配的App Key
-    debug = true//open debug mode
-}
+//bugly {
+//    appId = getProps("BUGLY_APP_ID") // 注册时分配的App ID
+//    appKey = getProps("BUGLY_APP_KEY") // 注册时分配的App Key
+//    debug = true//open debug mode
+//}
 
 def keystoreFilepath = ''
 def RELEASE_KEY_PASSWORD = ''
@@ -82,24 +82,24 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
+    api fileTree(include: ['*.jar'], dir: 'libs')
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:27.0.2'
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:design:27.0.2'
-    compile 'com.android.volley:volley:1.0.0'
-    compile 'com.jakewharton:butterknife:8.5.1'
-    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
-    compile 'com.google.code.gson:gson:2.8.0'
-    compile 'com.alibaba:fastjson:1.2.31'
-    compile 'com.android.support:recyclerview-v7:27.0.2'
-    compile 'com.android.support:cardview-v7:27.0.2'
-    compile 'com.github.bumptech.glide:glide:3.6.1'
-    compile 'com.android.support:support-v4:27.0.2'
-    compile 'com.squareup.picasso:picasso:2.5.2'
-    compile 'com.tencent.bugly:crashreport:2.6.5'
+    api 'com.android.support:appcompat-v7:27.0.2'
+    testImplementation 'junit:junit:4.12'
+    api 'com.android.support:design:27.0.2'
+    api 'com.android.volley:volley:1.0.0'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    api 'com.google.code.gson:gson:2.8.0'
+    api 'com.alibaba:fastjson:1.2.31'
+    api 'com.android.support:recyclerview-v7:27.0.2'
+    api 'com.android.support:cardview-v7:27.0.2'
+    api 'com.github.bumptech.glide:glide:3.6.1'
+    api 'com.android.support:support-v4:27.0.2'
+    api 'com.squareup.picasso:picasso:2.5.2'
+    api 'com.tencent.bugly:crashreport:3.1.0'
     //其中latest.release指代最新Bugly SDK版本号，也可以指定明确的版本号，例如2.2.0
     implementation 'org.greenrobot:greendao:3.2.2'
 }
